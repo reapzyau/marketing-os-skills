@@ -1,6 +1,6 @@
 # TVML Money Model Framework Reference
 
-This framework is inspired by Alex Hormozi's work on offer economics and business model design.
+The Vibe Marketing Lab's proprietary money model framework.
 
 ---
 

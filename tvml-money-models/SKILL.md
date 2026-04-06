@@ -7,7 +7,7 @@ description: "Build a money model workbook — the sequence of offers (attractio
 
 Build a complete money model workbook — the sequence of offers that maximizes customer lifetime value and ensures 30-day payback.
 
-This framework is inspired by Alex Hormozi's work on offer economics and business model design.
+Built on The Vibe Marketing Lab's proprietary offer economics and business model framework.
 
 ---
 

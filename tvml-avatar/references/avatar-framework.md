@@ -1,6 +1,6 @@
 # TVML Customer Avatar Framework
 
-> This framework draws on customer research methodologies inspired by Alisha Conlin-Hurd, among others.
+> The Vibe Marketing Lab's proprietary customer avatar framework.
 
 Your **Target Market Avatar** is the foundation for everything that follows -- offers, messaging, landing pages, ads. It captures who you're speaking to, what they want, what stops them, and the language they use. Do this well and your landing page becomes a digital appointment setter that converts.
 

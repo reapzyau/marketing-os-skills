@@ -7,7 +7,7 @@ description: "Build a customer avatar workbook from your business reference file
 
 Build a complete customer avatar workbook from business reference files using parallel agents.
 
-> This framework draws on customer research methodologies inspired by Alisha Conlin-Hurd, among others.
+> Built on The Vibe Marketing Lab's proprietary customer research methodology.
 
 ---
 

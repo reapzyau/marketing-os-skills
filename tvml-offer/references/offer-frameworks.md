@@ -1,6 +1,6 @@
 # TVML Offer Framework Reference
 
-This framework is inspired by the work of Alex Hormozi, Charlie Morgan, and Alisha Conlin-Hurd.
+The Vibe Marketing Lab's proprietary offer-building framework.
 
 ---
 

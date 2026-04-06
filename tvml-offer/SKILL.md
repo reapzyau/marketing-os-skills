@@ -7,7 +7,7 @@ description: "Build a high-value offer workbook from your avatar and business co
 
 Synthesizes proven offer-building methodologies into a structured workbook.
 
-This framework is inspired by the work of Alex Hormozi, Charlie Morgan, and Alisha Conlin-Hurd.
+Built on The Vibe Marketing Lab's proprietary offer-building methodology.
 
 This skill reads the avatar workbook as input and produces a complete offer workbook as output.
 
