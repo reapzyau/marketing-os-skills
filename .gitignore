@@ -1,0 +1,23 @@
+# Environment and secrets
+.env
+.env.*
+.env.local
+*.key
+*.pem
+*.cert
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node
+node_modules/
+
+# Output files (should stay in user's project, not here)
+outputs/
