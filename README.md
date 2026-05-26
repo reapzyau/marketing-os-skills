@@ -1,6 +1,6 @@
-# TVML Skill Bundle — The Offer Engine
+# TVML Skill Bundle
 
-Three AI skills that build your complete offer from scratch. Run them in order — each one feeds into the next.
+AI skills for The Vibe Marketing Lab community. Built around two pillars: an offer-building pipeline and research tooling. Run them in any order — each one stands alone.
 
 Built by [The Vibe Marketing Lab](https://www.skool.com/the-vibe-marketing-lab). Powered by Claude Code.
 
@@ -8,13 +8,21 @@ Built by [The Vibe Marketing Lab](https://www.skool.com/the-vibe-marketing-lab).
 
 ## What You Get
 
+**The Offer Engine — build your offer from scratch:**
+
 | # | Skill | What It Does | Time |
 |---|-------|-------------|------|
 | 1 | `/tvml-avatar` | Builds a 10-section customer avatar from your business files | ~3-5 min |
 | 2 | `/tvml-offer` | Builds a structured offer with value stack, pricing, guarantees, and packaging | ~5-8 min |
 | 3 | `/tvml-money-models` | Designs the full offer sequence — attraction, upsell, downsell, continuity — with 30-day payback math | ~5-8 min |
 
-**The chain:** Avatar → Offer → Money Model. Each skill reads the output of the previous one.
+**Research tooling — turn external content into searchable knowledge:**
+
+| # | Skill | What It Does | Time |
+|---|-------|-------------|------|
+| 4 | `/tvml-yt-transcribe` | Downloads SRT transcripts from any YouTube video, playlist, or full channel into a local research library | ~10s/video |
+
+**The offer chain:** Avatar → Offer → Money Model. Each offer skill reads the output of the previous one. `/tvml-yt-transcribe` is independent — use it anytime you want to mine a YouTube channel for content ideas, competitor angles, or research material.
 
 Each skill uses parallel AI agents to generate sections simultaneously, then validates everything with a dedicated fact-checking agent before writing the final workbook.
 
@@ -144,6 +152,22 @@ Claude reads your offer workbook and designs the full sequence:
 - Customer journey map from first touch to 12-month retention
 
 **Output:** `outputs/tvml-money-model-[name].md`
+
+### 4. Transcribe YouTube Research
+
+```
+/tvml-yt-transcribe
+```
+
+Paste in any YouTube URL and the skill downloads clean SRT transcripts you can grep, feed to Claude, or upload to NotebookLM:
+
+- **Single video URL** → no setup beyond `yt-dlp` (`pip install yt-dlp`)
+- **Playlist URL** → no setup beyond `yt-dlp`
+- **Full channel URL** → needs a free Apify account + `APIFY_TOKEN` (one-time, ~3 minutes — full walkthrough in the skill)
+
+**Output:** `outputs/transcripts/[Channel Name]/YYYY-MM-DD-[slug].en.srt`
+
+Then `grep -r "keyword" outputs/transcripts/[Channel Name]/` finds every mention of a topic across the channel in milliseconds. Ideal for competitor research, hook mining, or building a private knowledge base from any channel you study.
 
 ---
 
