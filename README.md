@@ -1,6 +1,6 @@
 # TVML Skill Bundle
 
-AI skills for The Vibe Marketing Lab community. Built around two pillars: an offer-building pipeline and research tooling. Run them in any order — each one stands alone.
+AI skills for The Vibe Marketing Lab community. Built around three pillars: an offer-building pipeline, research tooling, and a self-maintaining knowledge library. Run them in any order — each one stands alone.
 
 Built by [The Vibe Marketing Lab](https://www.skool.com/the-vibe-marketing-lab). Powered by Claude Code.
 
@@ -22,7 +22,19 @@ Built by [The Vibe Marketing Lab](https://www.skool.com/the-vibe-marketing-lab).
 |---|-------|-------------|------|
 | 4 | `/tvml-yt-transcribe` | Downloads SRT transcripts from any YouTube video, playlist, or full channel into a local research library | ~10s/video |
 
+**Knowledge library — a wiki that maintains itself (Karpathy's LLM Wiki pattern):**
+
+| # | Skill | What It Does | Time |
+|---|-------|-------------|------|
+| 5 | `/tvml-wiki-ingest` | Reads a source (file, folder, URL, or pasted text) and compiles it into interlinked wiki pages, updating indexes and the change log | ~30s/source |
+| 6 | `/tvml-wiki-query` | Answers a question from the wiki — reads the index, opens only the pages it needs, cites them, and files genuinely new answers back as pages | ~20s |
+| 7 | `/tvml-wiki-lint` | Health-checks the wiki — orphan pages, broken links, index mismatches, contradictions, stale data — and optionally auto-fixes | ~1 min |
+
+> **Setting up the vault:** the one-time setup is handled by a **master prompt** (included alongside this bundle — grab it from the Skool post), not a skill. Paste it into Claude Code in an empty folder, answer two questions, and it scaffolds the whole `raw/` + `wiki/` structure plus the schema. After that, the two skills below run the ongoing loop.
+
 **The offer chain:** Avatar → Offer → Money Model. Each offer skill reads the output of the previous one. `/tvml-yt-transcribe` is independent — use it anytime you want to mine a YouTube channel for content ideas, competitor angles, or research material.
+
+**The wiki loop:** Set up the vault once with the master prompt → Ingest sources as you collect them → Lint when it grows. Point it at anything you want to remember and reuse: books you read, research you do, your own projects, or your marketing (a voice-of-customer bank, a self-compiling competitor wiki, a content-idea vault). Same pattern, your call where to aim it.
 
 Each skill uses parallel AI agents to generate sections simultaneously, then validates everything with a dedicated fact-checking agent before writing the final workbook.
 
@@ -168,6 +180,81 @@ Paste in any YouTube URL and the skill downloads clean SRT transcripts you can g
 **Output:** `outputs/transcripts/[Channel Name]/YYYY-MM-DD-[slug].en.srt`
 
 Then `grep -r "keyword" outputs/transcripts/[Channel Name]/` finds every mention of a topic across the channel in milliseconds. Ideal for competitor research, hook mining, or building a private knowledge base from any channel you study.
+
+### 5. Build Your Knowledge Library
+
+**First, set up the vault (one time).** Use the master prompt that ships with this bundle — grab it from the Skool post, paste it into Claude Code in an empty folder, and answer the two questions it asks. It scaffolds the whole structure:
+
+- `knowledge/raw/` — your sources, frozen. You curate these; Claude never edits them.
+- `knowledge/wiki/` — the compiled pages Claude writes and maintains, connected with `[[wikilinks]]`.
+- A master index, per-domain indexes, and an append-only change log.
+- The wiki schema injected into your `CLAUDE.md` so every future session knows the rules.
+
+**Then feed it sources:**
+
+```
+/tvml-wiki-ingest
+```
+
+Drop a source into `knowledge/raw/` (or paste text, or hand over a URL) and Claude compiles it into the wiki — creating and updating entity and concept pages, wiring up cross-references, and logging the ingest. One source can touch 5-15 pages. The cross-referencing is done once, here, not re-derived every time you ask a question.
+
+**And keep it healthy as it grows:**
+
+```
+/tvml-wiki-lint
+```
+
+Claude scans the whole wiki for orphan pages, broken links, index mismatches, contradictions, and stale data, then hands you a report and offers to auto-fix the safe stuff (index updates, missing links). It's a linter, but for your knowledge instead of your code.
+
+**And to actually use what you've built:**
+
+```
+/tvml-wiki-query
+```
+
+Ask a question and Claude answers it *from the wiki* the disciplined way: it reads the index to find the right pages, opens just those two or three (never re-reading all your raw sources), and cites them. When an answer is genuinely new — a comparison, a synthesis, a connection — it files it back as its own page so you never lose it to chat history. This is the Ingest → **Query** → Lint trilogy completed.
+
+**Output:** a `knowledge/` folder you read in Obsidian — graph view shows every connection. No vector database, no code. Plain markdown you own.
+
+---
+
+## Using the Knowledge Library well
+
+A few rules that separate a library that compounds from a folder that rots.
+
+### raw vs wiki vs outputs — what goes where
+
+The test is **not** who made it. It's what role the file plays:
+
+- **`knowledge/raw/`** — INPUTS the AI reads but never edits. Source material, frozen. Collected from the world (articles, transcripts, competitor pages) *or* captured by you (call notes, voice memos) — as long as it's a source you want the AI to synthesise *from*. This is your source of truth.
+- **`knowledge/wiki/`** — COMPILED KNOWLEDGE the AI writes and maintains. The synthesis of your raw sources, interlinked. You read it; the AI writes it.
+- **`outputs/`** (optional, outside the vault) — FINISHED ARTEFACTS you generate *from* the wiki: a post, a deck, a headline, a report. Work product, not part of the knowledge graph.
+
+Litmus test: **does the AI read *from* it (`raw/`) or did the AI *produce* it (`outputs/`)?** Your own draft can be either — a draft kept so the AI learns your voice is `raw/`; a draft that's the finished deliverable is an output.
+
+### Would you ever ingest from `outputs/`? Almost never.
+
+Outputs are downstream of the wiki, so re-ingesting them is circular — you'd be re-synthesising your own synthesis. The one exception is the file-back move built into `/tvml-wiki-query`: if an artefact surfaced *genuinely new knowledge* (a research finding, a competitor fact), promote *that knowledge* into a wiki page. Don't dump the whole deliverable into `raw/`.
+
+### Already have a big library? Don't bulk-ingest it.
+
+- **Collected source docs** (PDFs, transcripts, clippings) → drop them into `raw/` as-is. That alone makes them available. Then ingest *only the slice you're about to use*, in small supervised batches — never the whole folder at once.
+- **Your own written/linked notes** (an existing vault) → these are already the `wiki/` layer. Point them at `knowledge/wiki/` and run `/tvml-wiki-lint` to index and link them. Don't ingest them as raw.
+- The rule that keeps it clean: **if you wrote it, it's `wiki/`; if you collected it, it's `raw/`.** And: **compile what you'll query, not your whole library.**
+
+### The daily loop
+
+```
+SET UP ONCE       → master prompt (scaffolds raw/ + wiki/ + the schema)
+FEED CONTINUOUSLY → drop sources into raw/ (/tvml-yt-transcribe, web clipper, file drops)
+INGEST ON DEMAND  → /tvml-wiki-ingest a domain when you're about to use it (small batches)
+QUERY VIA INDEX   → /tvml-wiki-query — and let it file good answers back
+LINT PERIODICALLY → /tvml-wiki-lint after a big batch, or monthly
+```
+
+### Scale note
+
+The index pattern works to roughly 100 sources / a few hundred pages with no search infrastructure. Past that, the agent can't lean on the index alone — add a local search tool (e.g. an on-device BM25 + vector search like `qmd`, available as CLI or MCP) so it can find pages without reading the whole index. This is exactly why "compile what you'll query" matters — it keeps you under the ceiling longer.
 
 ---
 
