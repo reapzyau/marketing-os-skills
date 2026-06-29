@@ -1,5 +1,5 @@
 ---
-name: tvml-money-models
+name: mos-money-models
 description: "Build a money model workbook — the sequence of offers (attraction, upsell, downsell, continuity) that maximizes customer lifetime value and 30-day payback. Requires completed offer workbook as input. Use when: (1) Designing offer sequence around a core offer (2) User says money model, offer sequence, upsell, downsell, continuity, cashflow, 30-day payback (3) Building a product ladder with cashflow optimization."
 ---
 
@@ -24,7 +24,7 @@ Before starting, read `references/money-model-frameworks.md` from this skill's d
 **Step 1: Locate and read the offer workbook.**
 
 Search for the offer workbook in order:
-1. `outputs/` in the current repo — look for `*tvml-offer-workbook*` first, then `*offer-workbook*` fallback
+1. `outputs/` in the current repo — look for `*mos-offer-workbook*` first, then `*offer-workbook*` fallback
 2. Any sibling repos on Desktop — search `**/offer-workbook*`
 3. If not found, ask the user to provide the path
 
@@ -32,7 +32,7 @@ The offer workbook is REQUIRED. Do not proceed without it. It provides: core off
 
 **Step 2: Read the avatar workbook (optional, for language).**
 
-Search `outputs/` for `*tvml-avatar-workbook*` first, then `*avatar*` fallback. If found, use the customer's language for offer naming and positioning. Not required to proceed.
+Search `outputs/` for `*mos-avatar-workbook*` first, then `*avatar*` fallback. If found, use the customer's language for offer naming and positioning. Not required to proceed.
 
 **Step 3: Read business context files (if they exist).**
 
@@ -414,7 +414,7 @@ Be genuinely critical. A rubber-stamp helps nobody.
 Fix any high-severity issues. Note medium/low issues in the validation section.
 
 **Step 2: Write the final workbook.**
-Output path: `outputs/tvml-money-model-[business-slug].md`
+Output path: `outputs/mos-money-model-[business-slug].md`
 
 **Step 3: Run the quality checklist** before saving.
 
@@ -608,12 +608,12 @@ Framework: Offer economics and business model design (16 mechanisms, 30-day payb
 
 | Step | Skill | Produces |
 |------|-------|---------|
-| 1 | tvml-avatar | Customer avatar workbook |
-| 2 | tvml-offer | Core offer workbook |
-| **3** | **tvml-money-models (here)** | **Money model workbook** |
+| 1 | mos-avatar | Customer avatar workbook |
+| 2 | mos-offer | Core offer workbook |
+| **3** | **mos-money-models (here)** | **Money model workbook** |
 
-Previous: Requires offer workbook from tvml-offer.
-Back to refine: If 30-day payback math fails, go back to tvml-offer to adjust pricing/guarantee/value stack. The chain is iterative.
+Previous: Requires offer workbook from mos-offer.
+Back to refine: If 30-day payback math fails, go back to mos-offer to adjust pricing/guarantee/value stack. The chain is iterative.
 
 Money model complete. Your full offer engine is built: avatar → offer → money model.
 
@@ -663,6 +663,6 @@ Before saving the final workbook, verify:
 - [ ] Cashflow acceleration tactics scored (9 tactics)
 - [ ] LTV projection at 1, 3, 6, 12 months
 - [ ] Quick Reference Card populated
-- [ ] Output saved to `outputs/tvml-money-model-[slug].md`
+- [ ] Output saved to `outputs/mos-money-model-[slug].md`
 - [ ] No branded course titles or absolute file paths in output
-- [ ] All skill references use tvml- prefix
+- [ ] All skill references use mos- prefix

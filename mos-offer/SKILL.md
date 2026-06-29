@@ -1,5 +1,5 @@
 ---
-name: tvml-offer
+name: mos-offer
 description: "Build a high-value offer workbook from your avatar and business context. Synthesizes proven offer-building methodologies into a structured workbook. Use when: (1) Creating a new offer for a business (2) User says offer, value stack, offer creation, pricing, guarantee, build an offer (3) Refining or stress-testing an existing offer."
 ---
 
@@ -15,7 +15,7 @@ This skill reads the avatar workbook as input and produces a complete offer work
 
 ## Prerequisites
 
-- An avatar workbook (from tvml-avatar or equivalent) — REQUIRED
+- An avatar workbook (from mos-avatar or equivalent) — REQUIRED
 - Business context files (optional but recommended)
 
 ---
@@ -27,8 +27,8 @@ This skill reads the avatar workbook as input and produces a complete offer work
 **Step 1: Locate and read the avatar workbook.**
 
 Search for the avatar workbook in order:
-1. `outputs/` in the current repo — look for `*tvml-avatar-workbook*` first, then `*avatar*` as fallback
-2. Any sibling repos on Desktop — search `**/tvml-avatar-workbook*` then `**/avatar*`
+1. `outputs/` in the current repo — look for `*mos-avatar-workbook*` first, then `*avatar*` as fallback
+2. Any sibling repos on Desktop — search `**/mos-avatar-workbook*` then `**/avatar*`
 3. If not found, ask the user to provide the path
 
 The avatar workbook is REQUIRED. Do not proceed without it. It provides: dream outcome language, pain points, before/after states, roadblocks, and emotional triggers that feed directly into the offer.
@@ -498,9 +498,9 @@ Fix any high-severity issues flagged in Phase 5. Note medium/low issues in the v
 
 **Step 2: Write the final workbook.**
 
-Output path: `outputs/tvml-offer-workbook-[offer-name-slug].md`
+Output path: `outputs/mos-offer-workbook-[offer-name-slug].md`
 
-Use the slug from the chosen M.A.G.I.C. name (lowercase, hyphens). Example: `outputs/tvml-offer-workbook-gym-owners-90-day-revenue-accelerator.md`
+Use the slug from the chosen M.A.G.I.C. name (lowercase, hyphens). Example: `outputs/mos-offer-workbook-gym-owners-90-day-revenue-accelerator.md`
 
 **Step 3: Run the quality checklist** (see below) before saving.
 
@@ -764,12 +764,12 @@ Total agents: 6 (2 sequential + 3 parallel + 1 validation)
 
 | Step | Skill | Produces |
 |------|-------|---------|
-| 1 | tvml-avatar | Customer avatar workbook |
-| **2** | **tvml-offer (here)** | **Core offer workbook** |
-| 3 | tvml-money-models | Money model workbook |
+| 1 | mos-avatar | Customer avatar workbook |
+| **2** | **mos-offer (here)** | **Core offer workbook** |
+| 3 | mos-money-models | Money model workbook |
 
-Previous: Requires avatar workbook from tvml-avatar.
-Next: "Offer ready. Say *build a money model* to run tvml-money-models."
+Previous: Requires avatar workbook from mos-avatar.
+Next: "Offer ready. Say *build a money model* to run mos-money-models."
 
 ---
 
@@ -801,7 +801,7 @@ Before saving the final workbook, verify:
 - [ ] 80/20 pricing fractal considered with specific tier prices
 - [ ] Guarantee + prepayment structures evaluated
 - [ ] Premium vs Free vs Discount decision tree applied
-- [ ] Output saved to `outputs/tvml-offer-workbook-[slug].md`
+- [ ] Output saved to `outputs/mos-offer-workbook-[slug].md`
 - [ ] Quick Reference Card is populated at the end
 
 ---
@@ -811,7 +811,7 @@ Before saving the final workbook, verify:
 **Avatar workbook not found:**
 - Search `outputs/` for any file matching `*avatar*`
 - Search sibling repos for `*avatar*`
-- Ask the user: "I need an avatar workbook to build the offer. Run tvml-avatar first, or point me to an existing one."
+- Ask the user: "I need an avatar workbook to build the offer. Run mos-avatar first, or point me to an existing one."
 
 **Business context files missing:**
 - Skip gracefully — the avatar workbook alone is sufficient
@@ -833,7 +833,7 @@ Before saving the final workbook, verify:
 
 | Issue | Fix |
 |-------|-----|
-| Avatar workbook too thin | Ask user for more detail on their customer, or run tvml-avatar first |
+| Avatar workbook too thin | Ask user for more detail on their customer, or run mos-avatar first |
 | Value stack feels generic | Go back to the problem universe — are problems specific enough? |
 | CUB Test keeps failing | Usually a clarity issue — simplify the offer, cut jargon |
 | Price feels arbitrary | Re-check value-to-price ratio and avatar's income/pain level |

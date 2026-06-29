@@ -1,5 +1,5 @@
 ---
-name: tvml-avatar
+name: mos-avatar
 description: "Build a customer avatar workbook from your business reference files. 10-section avatar with parallel agent generation, validation, and optional image generation. Use when: (1) Creating a customer avatar for a business (2) User says customer avatar, dream customer, target market, avatar workbook, who is my customer (3) Rebuilding or updating an existing avatar with new reference material."
 ---
 
@@ -17,7 +17,7 @@ Takes a business's reference files (soul, offer, audience, voice, testimonials) 
 
 Uses **3 parallel agents** for section generation and **1 validation agent** for fact-checking -- keeping the main conversation lean while producing deeper, more focused output per section.
 
-**Output:** `outputs/tvml-avatar-workbook.md` + `outputs/avatar-{name}.jpg`
+**Output:** `outputs/mos-avatar-workbook.md` + `outputs/avatar-{name}.jpg`
 
 ---
 
@@ -284,7 +284,7 @@ When the validation agent returns, add its table as `## Validation Notes` at the
 Write the assembled, validated workbook to:
 
 ```
-outputs/tvml-avatar-workbook.md
+outputs/mos-avatar-workbook.md
 ```
 
 Run the Quality Checklist before saving.
@@ -349,11 +349,11 @@ Phase 6: Write final workbook (main)
 
 | Step | Skill | Produces |
 |------|-------|---------|
-| **1** | **tvml-avatar (here)** | **Customer avatar workbook** |
-| 2 | tvml-offer | Core offer workbook |
-| 3 | tvml-money-models | Money model workbook |
+| **1** | **mos-avatar (here)** | **Customer avatar workbook** |
+| 2 | mos-offer | Core offer workbook |
+| 3 | mos-money-models | Money model workbook |
 
-Next: "Avatar ready. Say *build an offer* to run tvml-offer."
+Next: "Avatar ready. Say *build an offer* to run mos-offer."
 
 ---
 
@@ -391,7 +391,7 @@ Actions:
 7. Generate avatar image (if Gemini configured)
 8. Write final workbook
 
-Result: `outputs/tvml-avatar-workbook.md` with validated 10-section avatar.
+Result: `outputs/mos-avatar-workbook.md` with validated 10-section avatar.
 
 ### Example 2: Rebuild avatar with new testimonials
 

@@ -1,6 +1,6 @@
 ---
-name: tvml-x-post
-description: "Generate X/Twitter posts from topics or repurpose long-form content into X posts. Use when: user says 'X post', 'tweet', 'thread', 'twitter post', 'write a thread', 'repurpose this into tweets', 'social content for X'. For LinkedIn posts, use /tvml-linkedin-post."
+name: mos-x-post
+description: "Generate X/Twitter posts from topics or repurpose long-form content into X posts. Use when: user says 'X post', 'tweet', 'thread', 'twitter post', 'write a thread', 'repurpose this into tweets', 'social content for X'. For LinkedIn posts, use /mos-linkedin-post."
 ---
 
 # X Posts
@@ -17,7 +17,7 @@ Detect if user is in the right place:
 |-----------|-----------|----------|
 | "X post", "tweet", "thread", "twitter post" | X posts | Continue here |
 | "repurpose this", "turn this into tweets", "break this down for X" | Repurpose long-form | Continue here (Repurpose mode) |
-| "linkedin post", "linkedin thread" | LinkedIn posts | `/tvml-linkedin-post` |
+| "linkedin post", "linkedin thread" | LinkedIn posts | `/mos-linkedin-post` |
 | "skool post", "community post", "daily post" | Skool community | Skool post skill |
 | "reel", "tiktok", "carousel", "instagram post" | Short-form video / IG | Organic content skill |
 | "ad", "meta ad", "facebook ad" | Paid ads | Ads skill |

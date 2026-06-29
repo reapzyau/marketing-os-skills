@@ -28,17 +28,17 @@ This repo is shared externally. Every commit is visible to community members.
 Claude Code skills for The Vibe Marketing Lab community, across three pillars:
 
 **Offer engine:**
-1. `tvml-avatar` — Customer avatar workbook
-2. `tvml-offer` — Offer creation workbook
-3. `tvml-money-models` — Money model workbook
+1. `mos-avatar` — Customer avatar workbook
+2. `mos-offer` — Offer creation workbook
+3. `mos-money-models` — Money model workbook
 
 **Research tooling:**
-4. `tvml-yt-transcribe` — YouTube transcript downloader
+4. `mos-yt-transcribe` — YouTube transcript downloader
 
 **Knowledge library (Karpathy LLM Wiki pattern — Ingest / Query / Lint):**
-5. `tvml-wiki-ingest` — Compile sources into interlinked wiki pages
-6. `tvml-wiki-query` — Answer from the wiki (read index → pages → cite → file new knowledge back)
-7. `tvml-wiki-lint` — Health-check the wiki for drift
+5. `mos-wiki-ingest` — Compile sources into interlinked wiki pages
+6. `mos-wiki-query` — Answer from the wiki (read index → pages → cite → file new knowledge back)
+7. `mos-wiki-lint` — Health-check the wiki for drift
 
 > Wiki setup is handled by a standalone master prompt (shipped alongside the bundle), not a skill. The three wiki skills run the ongoing ingest → query → maintain loop once the vault exists.
 

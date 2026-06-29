@@ -1,6 +1,6 @@
 ---
-name: tvml-linkedin-post
-description: "Generate LinkedIn posts from topics or repurpose long-form content into LinkedIn posts. Use when: user says 'linkedin post', 'linkedin content', 'write a linkedin post', 'repurpose this for linkedin', 'social post for linkedin'. NOT for X/Twitter (use /tvml-x-post). NOT for Reels/TikTok/carousels. NOT for Skool posts."
+name: mos-linkedin-post
+description: "Generate LinkedIn posts from topics or repurpose long-form content into LinkedIn posts. Use when: user says 'linkedin post', 'linkedin content', 'write a linkedin post', 'repurpose this for linkedin', 'social post for linkedin'. NOT for X/Twitter (use /mos-x-post). NOT for Reels/TikTok/carousels. NOT for Skool posts."
 ---
 
 # LinkedIn Posts
@@ -17,7 +17,7 @@ Detect if user is in the right place:
 |-----------|-----------|----------|
 | "linkedin post", "social post", "write a linkedin post" | LinkedIn posts | Continue here |
 | "repurpose this for linkedin", "turn this into linkedin posts" | Repurpose long-form | Continue here (Repurpose mode) |
-| "X post", "tweet", "thread", "twitter post" | X/Twitter posts | `/tvml-x-post` |
+| "X post", "tweet", "thread", "twitter post" | X/Twitter posts | `/mos-x-post` |
 | "skool post", "community post", "daily post" | Skool community | Describe: write a post for your Skool community |
 | "reel", "tiktok", "carousel", "instagram post" | Short-form video / IG | Describe: create short-form or IG content |
 | "ad", "meta ad", "facebook ad" | Paid ads | Describe: create paid ad copy |

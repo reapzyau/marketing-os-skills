@@ -1,5 +1,5 @@
 ---
-name: tvml-wiki-lint
+name: mos-wiki-lint
 description: "Health check the LLM Wiki — scan for orphan pages, stale data, missing cross-references, contradictions, index mismatches, and data gaps. Produces an actionable report and optionally auto-fixes issues. Use when: user says 'wiki lint', 'health check the wiki', 'wiki health check', 'check the wiki', 'lint wiki', 'wiki audit', 'clean up the wiki', 'wiki maintenance', or wants to verify wiki integrity. Also useful after a large batch of ingests or when the wiki feels stale."
 ---
 

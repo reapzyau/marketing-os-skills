@@ -1,5 +1,5 @@
 ---
-name: tvml-wiki-query
+name: mos-wiki-query
 description: "Answer questions from the LLM Wiki the disciplined way — read the index first, open only the pages you need, synthesise a cited answer, then file genuinely new knowledge back into the wiki. Use when: user asks a question about a wiki domain, says 'query the wiki', 'ask the wiki', 'what does the wiki say about', 'what do we know about', 'search my knowledge base', 'pull from the wiki', 'wiki query', or wants an answer grounded in their compiled knowledge rather than re-read from raw sources."
 ---
 

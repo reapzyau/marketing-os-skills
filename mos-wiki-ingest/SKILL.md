@@ -1,5 +1,5 @@
 ---
-name: tvml-wiki-ingest
+name: mos-wiki-ingest
 description: "Ingest source material into the LLM Wiki — reads sources from knowledge/raw/, URLs, or conversation context, then compiles into wiki pages with wikilinks, updates indexes, and logs the ingest. Use when: user says 'ingest this', 'ingest knowledge/raw/', 'process this source', 'add to wiki', 'compile this into the wiki', 'wiki ingest', drops a file in knowledge/raw/ and wants it processed, pastes content and says to add it to the knowledge base, or provides a URL to compile into wiki pages. Also triggers when the user asks a research question and the answer should be filed into the wiki."
 ---
 

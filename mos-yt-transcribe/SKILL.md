@@ -1,5 +1,5 @@
 ---
-name: tvml-yt-transcribe
+name: mos-yt-transcribe
 description: "Download SRT subtitle transcripts from YouTube and save them to a local research library. Use when: user provides a YouTube URL (single video, channel, or playlist), or says 'download transcripts', 'get transcripts from', 'save subtitles from YouTube', 'transcribe a youtube channel', 'extract subtitles'. Two modes — single video URL needs no setup, channel/playlist needs an Apify token for video discovery at scale."
 ---
 
@@ -205,10 +205,10 @@ Do NOT run the actor until the user confirms.
 The skill bundles `scripts/run_actor.js`. Resolve the skill folder at runtime:
 
 ```bash
-SKILL_DIR=$(dirname "$(readlink -f ~/.claude/skills/tvml/tvml-yt-transcribe/SKILL.md)")
+SKILL_DIR=$(dirname "$(readlink -f ~/.claude/skills/mos/mos-yt-transcribe/SKILL.md)")
 ```
 
-(If you cloned the tvml-skills repo to a different path, adjust accordingly. The install command in the repo README is `git clone https://github.com/reapzyau/tvml-skills.git ~/.claude/skills/tvml`.)
+(If you cloned the marketingos-skills repo to a different path, adjust accordingly. The install command in the repo README is `git clone https://github.com/reapzyau/marketingos-skills.git ~/.claude/skills/mos`.)
 
 Run the actor:
 

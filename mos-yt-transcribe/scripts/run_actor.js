@@ -14,7 +14,7 @@ import { parseArgs } from 'node:util';
 import { writeFileSync, statSync } from 'node:fs';
 
 // User-Agent for tracking skill usage in Apify analytics
-const USER_AGENT = 'apify-agent-skills/tvml-yt-transcribe-1.0.0';
+const USER_AGENT = 'apify-agent-skills/mos-yt-transcribe-1.0.0';
 
 // Parse command-line arguments
 function parseCliArgs() {
