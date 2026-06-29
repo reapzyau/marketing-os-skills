@@ -1,5 +1,12 @@
 # TVML Skill Bundle
 
+> **📛 Renamed: `tvml-skills` → `marketingos-skills`.** This repo and every skill in it moved to the **MarketingOS** brand. The skills are now `mos-*` prefixed (e.g. `/mos-avatar`, `/mos-onboarding`) so they line up with the `mos` CLI — one consistent name across the whole product (`marketing-os` / `mos`) instead of a mix of `tvml-*` and `mos-*`.
+>
+> **If you cloned the old `tvml-skills` repo:** GitHub auto-redirects the old URL, but update your remote and the local skills path to be safe:
+> ```bash
+> git remote set-url origin https://github.com/reapzyau/marketingos-skills.git
+> ```
+
 AI skills for The Vibe Marketing Lab community. Everyone starts with **`/mos-onboarding`**, which scaffolds your MarketingOS repo — the home base every other skill works inside. From there: an offer-building pipeline, social-content writers, research tooling, and a self-maintaining knowledge library.
 
 Built by [The Vibe Marketing Lab](https://www.skool.com/the-vibe-marketing-lab). Powered by Claude Code.
