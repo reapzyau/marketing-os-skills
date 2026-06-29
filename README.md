@@ -1,12 +1,20 @@
 # TVML Skill Bundle
 
-AI skills for The Vibe Marketing Lab community. Built around three pillars: an offer-building pipeline, research tooling, and a self-maintaining knowledge library. Run them in any order — each one stands alone.
+AI skills for The Vibe Marketing Lab community. Everyone starts with **`/mos-onboarding`**, which scaffolds your MarketingOS repo — the home base every other skill works inside. From there: an offer-building pipeline, social-content writers, research tooling, and a self-maintaining knowledge library.
 
 Built by [The Vibe Marketing Lab](https://www.skool.com/the-vibe-marketing-lab). Powered by Claude Code.
 
 ---
 
 ## What You Get
+
+**🚀 Start here — `/mos-onboarding`:**
+
+| Skill | What It Does | Time |
+|-------|-------------|------|
+| `/mos-onboarding` | Scaffolds your MarketingOS repo — detects in-house vs agency, creates it from the right GitHub template, writes your `.mos/` config, and (for agencies) creates + registers client repos | ~2 min |
+
+**Everyone runs this first.** It builds the home base — a correctly-structured repo — that every other skill works inside. Whether you're a marketer setting up for the first time or an agency adding a client, this is the front door.
 
 **The Offer Engine — build your offer from scratch:**
 
@@ -16,19 +24,26 @@ Built by [The Vibe Marketing Lab](https://www.skool.com/the-vibe-marketing-lab).
 | 2 | `/mos-offer` | Builds a structured offer with value stack, pricing, guarantees, and packaging | ~5-8 min |
 | 3 | `/mos-money-models` | Designs the full offer sequence — attraction, upsell, downsell, continuity — with 30-day payback math | ~5-8 min |
 
+**Social content — turn a topic or long-form piece into platform-ready posts:**
+
+| # | Skill | What It Does | Time |
+|---|-------|-------------|------|
+| 4 | `/mos-linkedin-post` | Generates LinkedIn posts from a topic, or repurposes long-form content into a batch of posts | ~2-3 min |
+| 5 | `/mos-x-post` | Generates X/Twitter posts and threads from a topic, or repurposes long-form into tweets | ~2-3 min |
+
 **Research tooling — turn external content into searchable knowledge:**
 
 | # | Skill | What It Does | Time |
 |---|-------|-------------|------|
-| 4 | `/mos-yt-transcribe` | Downloads SRT transcripts from any YouTube video, playlist, or full channel into a local research library | ~10s/video |
+| 6 | `/mos-yt-transcribe` | Downloads SRT transcripts from any YouTube video, playlist, or full channel into a local research library | ~10s/video |
 
 **Knowledge library — a wiki that maintains itself (Karpathy's LLM Wiki pattern):**
 
 | # | Skill | What It Does | Time |
 |---|-------|-------------|------|
-| 5 | `/mos-wiki-ingest` | Reads a source (file, folder, URL, or pasted text) and compiles it into interlinked wiki pages, updating indexes and the change log | ~30s/source |
-| 6 | `/mos-wiki-query` | Answers a question from the wiki — reads the index, opens only the pages it needs, cites them, and files genuinely new answers back as pages | ~20s |
-| 7 | `/mos-wiki-lint` | Health-checks the wiki — orphan pages, broken links, index mismatches, contradictions, stale data — and optionally auto-fixes | ~1 min |
+| 7 | `/mos-wiki-ingest` | Reads a source (file, folder, URL, or pasted text) and compiles it into interlinked wiki pages, updating indexes and the change log | ~30s/source |
+| 8 | `/mos-wiki-query` | Answers a question from the wiki — reads the index, opens only the pages it needs, cites them, and files genuinely new answers back as pages | ~20s |
+| 9 | `/mos-wiki-lint` | Health-checks the wiki — orphan pages, broken links, index mismatches, contradictions, stale data — and optionally auto-fixes | ~1 min |
 
 > **Setting up the vault:** the one-time setup is handled by a **master prompt** (included alongside this bundle — grab it from the Skool post), not a skill. Paste it into Claude Code in an empty folder, answer two questions, and it scaffolds the whole `raw/` + `wiki/` structure plus the schema. After that, the two skills below run the ongoing loop.
 
@@ -106,6 +121,21 @@ Open Claude Code in any project and type `/mos-avatar`. If it loads the skill, y
 
 ## How to Use
 
+### Start Here: Onboard Your Repo
+
+```
+/mos-onboarding
+```
+
+The first thing you run. It asks one question — **are you in-house (one brand you run) or an agency (serving clients)?** — then scaffolds the right MarketingOS repo:
+
+- **In-house** → a single HQ repo for your brand.
+- **Agency** → an HQ repo for your agency, plus a separate, registered repo for each client.
+
+It writes your `.mos/config.yaml` (mode + identity), sets up the folder structure and rules, and gets the repo ready to open in Claude Code. Once it exists and your business files are in, run the skills below inside it.
+
+---
+
 ### 1. Build Your Avatar
 
 ```
@@ -165,7 +195,23 @@ Claude reads your offer workbook and designs the full sequence:
 
 **Output:** `outputs/mos-money-model-[name].md`
 
-### 4. Transcribe YouTube Research
+### 4. Write LinkedIn Posts
+
+```
+/mos-linkedin-post
+```
+
+Give it a topic, or point it at a long-form piece (a transcript, a wiki page, a past post) and it writes LinkedIn posts in your voice — single posts from an idea, or a batch repurposed from one long source.
+
+### 5. Write X Posts
+
+```
+/mos-x-post
+```
+
+Same idea for X/Twitter — single posts or full threads from a topic, or your long-form content repurposed into tweets.
+
+### 6. Transcribe YouTube Research
 
 ```
 /mos-yt-transcribe
@@ -181,7 +227,7 @@ Paste in any YouTube URL and the skill downloads clean SRT transcripts you can g
 
 Then `grep -r "keyword" outputs/transcripts/[Channel Name]/` finds every mention of a topic across the channel in milliseconds. Ideal for competitor research, hook mining, or building a private knowledge base from any channel you study.
 
-### 5. Build Your Knowledge Library
+### 7. Build Your Knowledge Library
 
 **First, set up the vault (one time).** Use the master prompt that ships with this bundle — grab it from the Skool post, paste it into Claude Code in an empty folder, and answer the two questions it asks. It scaffolds the whole structure:
 
