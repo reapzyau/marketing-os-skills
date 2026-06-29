@@ -1,19 +1,27 @@
 # TVML Skill Bundle
 
-> **📛 Renamed: `tvml-skills` → `marketing-os-skills`.** This repo and every skill in it moved to the **MarketingOS** brand. The skills are now `mos-*` prefixed (e.g. `/mos-avatar`, `/mos-offer`) so they line up with the `mos` CLI — one consistent name across the whole product (`marketing-os` / `mos`) instead of a mix of `tvml-*` and `mos-*`.
+> **📛 Renamed: `tvml-skills` → `marketing-os-skills`.** This repo and every skill in it moved to the **MarketingOS** brand. The skills are now `mos-*` prefixed (e.g. `/mos-avatar`, `/mos-onboarding`) so they line up with the `mos` CLI — one consistent name across the whole product (`marketing-os` / `mos`) instead of a mix of `tvml-*` and `mos-*`.
 >
 > **If you cloned the old `tvml-skills` repo:** GitHub auto-redirects the old URL, but update your remote and the local skills path to be safe:
 > ```bash
 > git remote set-url origin https://github.com/reapzyau/marketing-os-skills.git
 > ```
 
-AI skills for The Vibe Marketing Lab community. Built around four pillars: an offer-building pipeline, social-content writers, research tooling, and a self-maintaining knowledge library. Run them in any order — each one stands alone.
+AI skills for The Vibe Marketing Lab community. Everyone starts with **`/mos-onboarding`**, which scaffolds your MarketingOS repo — the home base every other skill works inside. From there: an offer-building pipeline, social-content writers, research tooling, and a self-maintaining knowledge library.
 
 Built by [The Vibe Marketing Lab](https://www.skool.com/the-vibe-marketing-lab). Powered by Claude Code.
 
 ---
 
 ## What You Get
+
+**🚀 Start here — `/mos-onboarding`:**
+
+| Skill | What It Does | Time |
+|-------|-------------|------|
+| `/mos-onboarding` | Scaffolds your MarketingOS repo — detects in-house vs agency, creates it from the right GitHub template, writes your `.mos/` config, and (for agencies) creates + registers client repos | ~2 min |
+
+**Everyone runs this first.** It builds the home base — a correctly-structured repo — that every other skill works inside. Whether you're a marketer setting up for the first time or an agency adding a client, this is the front door.
 
 **The Offer Engine — build your offer from scratch:**
 
@@ -119,6 +127,21 @@ Open Claude Code in any project and type `/mos-avatar`. If it loads the skill, y
 ---
 
 ## How to Use
+
+### Start Here: Onboard Your Repo
+
+```
+/mos-onboarding
+```
+
+The first thing you run. It asks one question — **are you in-house (one brand you run) or an agency (serving clients)?** — then scaffolds the right MarketingOS repo:
+
+- **In-house** → a single HQ repo for your brand.
+- **Agency** → an HQ repo for your agency, plus a separate, registered repo for each client.
+
+It writes your `.mos/config.yaml` (mode + identity), sets up the folder structure and rules, and gets the repo ready to open in Claude Code. Once it exists and your business files are in, run the skills below inside it.
+
+---
 
 ### 1. Build Your Avatar
 
