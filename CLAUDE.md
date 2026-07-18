@@ -25,20 +25,33 @@ This repo is shared externally. Every commit is visible to community members.
 
 ## What This Repo Contains
 
-Claude Code skills for The Vibe Marketing Lab community, across three pillars:
+Claude Code skills for The Vibe Marketing Lab community, across four pillars:
 
 **Offer engine:**
 1. `mos-avatar` — Customer avatar workbook
 2. `mos-offer` — Offer creation workbook
 3. `mos-money-models` — Money model workbook
 
+**Social content:**
+4. `mos-linkedin-post` — LinkedIn posts from a topic or repurposed long-form
+5. `mos-x-post` — X/Twitter posts and threads from a topic or repurposed long-form
+
 **Research tooling:**
-4. `mos-yt-transcribe` — YouTube transcript downloader
+6. `mos-yt-transcribe` — YouTube transcript downloader
 
 **Knowledge library (Karpathy LLM Wiki pattern — Ingest / Query / Lint):**
-5. `mos-wiki-ingest` — Compile sources into interlinked wiki pages
-6. `mos-wiki-query` — Answer from the wiki (read index → pages → cite → file new knowledge back)
-7. `mos-wiki-lint` — Health-check the wiki for drift
+7. `mos-wiki-ingest` — Compile sources into interlinked wiki pages
+8. `mos-wiki-query` — Answer from the wiki (read index → pages → cite → file new knowledge back)
+9. `mos-wiki-lint` — Health-check the wiki for drift
+
+## Scope Rule (which skills belong here)
+
+This repo holds **engine-agnostic** skills only — skills that work in any Claude Code project
+without the `mos` CLI. The MarketingOS lifecycle skills (onboard/setup, start, status, think,
+bet, end, update, help) ship natively inside the MarketingOS engine and install via
+`mos install`, so they can never drift from the CLI they wrap. If a skill here starts
+depending on `mos` commands, it either moves into the engine bundle or must degrade
+gracefully when the CLI is absent.
 
 > Wiki setup is handled by a standalone master prompt (shipped alongside the bundle), not a skill. The three wiki skills run the ongoing ingest → query → maintain loop once the vault exists.
 
