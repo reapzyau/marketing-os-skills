@@ -32,6 +32,16 @@ Claude Code skills for The Vibe Marketing Lab community, across four pillars:
 2. `mos-offer` — Offer creation workbook
 3. `mos-money-models` — Money model workbook
 
+**The $100M chain — interactive, chapter-by-chapter alternative to 2 + 3:**
+- `mos-100m-offer` — Grand Slam Offer, 12 stops
+- `mos-100m-leads` — Lead magnet + one channel, 10 stops
+- `mos-100m-money-models` — Offer sequencing for 30-day payback, 6 stops
+- `mos-100m-onepager` — GTM one-pager capstone
+
+All four read and write `outputs/mos-100m-*-{{slug}}.md`, sharing one slug so each step finds the previous one's output.
+
+> **Third-party framework rule.** These four apply frameworks from published books by Alex Hormozi. They are independent implementations, not affiliated with or endorsed by the author, and every SKILL.md carries that attribution. Do NOT add verbatim extracts, scanned material, or redistributable "cheat sheets" derived from the source texts to this public repo. The `references/` files must stay operational summaries written for the build process — one such cheat-sheet artifact was deliberately excluded during the port for exactly this reason.
+
 **Social content:**
 4. `mos-linkedin-post` — LinkedIn posts from a topic or repurposed long-form
 5. `mos-x-post` — X/Twitter posts and threads from a topic or repurposed long-form
