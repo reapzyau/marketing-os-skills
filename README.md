@@ -27,6 +27,21 @@ Built by [The Vibe Marketing Lab](https://www.skool.com/the-vibe-marketing-lab).
 | 2 | `/mos-offer` | Builds a structured offer with value stack, pricing, guarantees, and packaging | ~5-8 min |
 | 3 | `/mos-money-models` | Designs the full offer sequence — attraction, upsell, downsell, continuity — with 30-day payback math | ~5-8 min |
 
+**The $100M chain — the same four jobs, walked one decision at a time:**
+
+These four are the interactive, chapter-by-chapter alternative to `/mos-offer` and `/mos-money-models`. Instead of generating a workbook for you to review, they stop at every decision and make you choose. Slower, and much harder to end up with a plan you don't believe.
+
+| # | Skill | What It Does | Stops |
+|---|-------|-------------|-------|
+| 2a | `/mos-100m-offer` | Builds a Grand Slam Offer — market, pricing, value equation, bonuses, guarantee, naming | 12 |
+| 2b | `/mos-100m-leads` | Builds a lead magnet plus ONE advertising channel, with real activity maths | 10 |
+| 2c | `/mos-100m-money-models` | Sequences attraction, upsell, downsell and continuity offers for 30-day payback | 6 |
+| 2d | `/mos-100m-onepager` | Distils all three into a one-page GTM summary, in markdown, Word and HTML | — |
+
+Run them in order — each reads the previous one's output from `outputs/`, and they all share one `{{slug}}`. Pick either this chain or `/mos-offer` + `/mos-money-models`; running both just gives you two competing offers.
+
+> These four apply the frameworks from Alex Hormozi's *$100M Offers*, *$100M Leads* and *$100M Money Models*. They are independent implementations, not affiliated with or endorsed by the author. Read the books for the full argument — these skills are the build process, not a substitute for the source.
+
 **Social content — turn a topic or long-form piece into platform-ready posts:**
 
 | # | Skill | What It Does | Time |
@@ -67,6 +82,17 @@ outputs/
 ├── mos-avatar-workbook.md           # Who your dream customer is
 ├── mos-offer-workbook-[name].md     # Your structured offer
 └── mos-money-model-[name].md        # Your complete offer sequence
+```
+
+Or, if you took the `$100M` chain instead — four files sharing one slug:
+
+```
+outputs/
+├── mos-avatar-workbook.md                  # Who your dream customer is
+├── mos-100m-offer-workbook-[slug].md       # Your Grand Slam Offer
+├── mos-100m-leads-plan-[slug].md           # Lead magnet + one channel
+├── mos-100m-money-model-[slug].md          # Your offer sequence
+└── mos-100m-gtm-onepager-[slug].md         # The whole thing on one page
 ```
 
 Together, these give you:
