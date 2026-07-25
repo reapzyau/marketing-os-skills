@@ -42,6 +42,13 @@ All four read and write `outputs/mos-100m-*-{{slug}}.md`, sharing one slug so ea
 
 > **Third-party framework rule.** These four apply frameworks from published books by Alex Hormozi. They are independent implementations, not affiliated with or endorsed by the author, and every SKILL.md carries that attribution. Do NOT add verbatim extracts, scanned material, or redistributable "cheat sheets" derived from the source texts to this public repo. The `references/` files must stay operational summaries written for the build process — one such cheat-sheet artifact was deliberately excluded during the port for exactly this reason.
 
+**The Copywriting Blueprint (research → write → QA):**
+- `mos-copy-research` — 6-step research ladder + compounding Research Bank
+- `mos-copywriting` — writes the copy from distilled classic frameworks
+- `mos-proofread` — ordered single-lens QA passes, line-referenced rewrites
+
+> Same third-party framework rule as the $100M chain applies here. `mos-copywriting` draws on published works by Sugarman, Kennedy, Ogilvy, Caples and Halbert; every `references/` file carries its own `Source:` line and the SKILL.md carries an independent-implementation notice. Do NOT add verbatim extracts or redistributable reproductions of those books.
+
 **Social content:**
 4. `mos-linkedin-post` — LinkedIn posts from a topic or repurposed long-form
 5. `mos-x-post` — X/Twitter posts and threads from a topic or repurposed long-form
