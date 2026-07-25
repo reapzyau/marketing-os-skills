@@ -42,6 +42,18 @@ Run them in order — each reads the previous one's output from `outputs/`, and 
 
 > These four apply the frameworks from Alex Hormozi's *$100M Offers*, *$100M Leads* and *$100M Money Models*. They are independent implementations, not affiliated with or endorsed by the author. Read the books for the full argument — these skills are the build process, not a substitute for the source.
 
+**The Copywriting Blueprint — research it, write it, then pressure-test it:**
+
+| # | Skill | What It Does | Time |
+|---|-------|-------------|------|
+| 3a | `/mos-copy-research` | Runs the 6-step research ladder and builds a compounding Research Bank of real reader language | ~10-20 min |
+| 3b | `/mos-copywriting` | Writes headlines, ads, emails, landing pages, sales letters and VSLs from distilled classic frameworks | ~3-8 min |
+| 3c | `/mos-proofread` | QA pass — ordered single-lens reviews returning line-referenced rewrites | ~2-5 min |
+
+Run them in order. `/mos-copywriting` gates on real reader language, so `/mos-copy-research` is not optional for high-stakes surfaces.
+
+> `/mos-copywriting` applies frameworks from published works by Joseph Sugarman, Dan Kennedy, David Ogilvy, John Caples and Gary Halbert. Independent implementation, not affiliated with or endorsed by those authors or their estates.
+
 **Social content — turn a topic or long-form piece into platform-ready posts:**
 
 | # | Skill | What It Does | Time |
