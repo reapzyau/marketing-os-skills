@@ -1,15 +1,10 @@
-# TVML Skill Bundle
+# marketing-os-skills
 
-> **📛 Renamed: `tvml-skills` → `marketing-os-skills`.** This repo and every skill in it moved to the **MarketingOS** brand. The skills are now `mos-*` prefixed (e.g. `/mos-avatar`, `/mos-wiki-ingest`) so they line up with the `mos` CLI — one consistent name across the whole product (`marketing-os` / `mos`) instead of a mix of `tvml-*` and `mos-*`.
->
-> **If you cloned the old `tvml-skills` repo:** GitHub auto-redirects the old URL, but update your remote and the local skills path to be safe:
-> ```bash
-> git remote set-url origin https://github.com/reapzyau/marketing-os-skills.git
-> ```
+> Formerly `tvml-skills`. The repo and every skill in it moved to the MarketingOS brand (`mos-*` prefix, matching the `mos` CLI); the old GitHub URL redirects here.
 
 AI skills for The Vibe Marketing Lab community: an offer-building pipeline, social-content writers, research tooling, and a self-maintaining knowledge library.
 
-**Scope of this repo:** every skill here is engine-agnostic — it works in any Claude Code project, no CLI required. The MarketingOS *lifecycle* skills (onboarding/setup, start, status, think, bet, end, update, help) are no longer in this repo: they ship natively with the MarketingOS engine and install via `mos install`, so they always match the engine version you're running. Updates on that are announced in the Skool community.
+**Scope of this repo:** every skill here is engine-agnostic — it works in any Claude Code project, no CLI required. The MarketingOS *lifecycle* skills (onboarding/setup, start, status, think, bet, end, update, help) are no longer in this repo: they ship natively with the MarketingOS engine and install via `mos install`, so they always match the engine version you're running. The engine itself is one line: `pipx install marketing-os`. Updates on that are announced in the Skool community.
 
 Built by [The Vibe Marketing Lab](https://www.skool.com/the-vibe-marketing-lab). Powered by Claude Code.
 
@@ -135,24 +130,39 @@ Before running the skills, you need:
    | `voice.md` | How your brand speaks — tone, phrases, personality |
 
    - **Optional but powerful:** `reference/proof/testimonials.md` — real customer quotes. The more real language you give it, the sharper the output.
+   - **Scaffolded your brain with `mos onboard`?** The engine writes it under `business/`, but these skills currently read `reference/core/` — so copy or symlink the files across until the skills are aligned to the engine's layout (it's on the list):
+
+   | `mos onboard` writes | These skills read |
+   |------|------|
+   | `business/brand/brand.md`, `business/brand/voice.md` | `reference/core/soul.md`, `reference/core/voice.md` |
+   | `business/audience/primary.md`, `business/offers/<slug>/offer.md` | `reference/core/audience.md`, `reference/core/offer.md` |
+   | `business/proof/testimonials.md` | `reference/proof/testimonials.md` |
 
 ---
 
 ## Installation
 
-### Step 1: Accept the GitHub invite
+The repo is public — no invite needed.
 
-Check your email for a collaborator invite from `reapzyau/marketing-os-skills`. Click accept.
+### Step 1: Clone the repo
 
-### Step 2: Clone the repo
-
-Open your terminal and run:
+Clone it anywhere. `~/Desktop/marketing-os-skills` is a fine spot:
 
 ```bash
-git clone https://github.com/reapzyau/marketing-os-skills.git ~/.claude/skills/mos
+git clone https://github.com/reapzyau/marketing-os-skills.git ~/Desktop/marketing-os-skills
 ```
 
-This installs the skills globally — they'll be available in every Claude Code project.
+### Step 2: Link the skills into `~/.claude/skills/`
+
+Claude Code only finds a skill whose folder is a *direct* child of `~/.claude/skills/` — it looks for `~/.claude/skills/<name>/SKILL.md` and never deeper. So don't clone straight into `~/.claude/skills/`; link each `mos-*` folder in instead. Once linked, the skills are available in every Claude Code project.
+
+macOS / Linux:
+
+```bash
+for d in ~/Desktop/marketing-os-skills/mos-*; do ln -s "$d" ~/.claude/skills/; done
+```
+
+Windows: open Git Bash and make a junction per folder, e.g. `cmd //c mklink //J "$USERPROFILE\.claude\skills\mos-avatar" "$USERPROFILE\Desktop\marketing-os-skills\mos-avatar"` — or simply copy the `mos-*` folders into `~/.claude/skills/`.
 
 ### Step 3: Verify
 
@@ -337,10 +347,10 @@ The index pattern works to roughly 100 sources / a few hundred pages with no sea
 When new versions are released, pull the latest:
 
 ```bash
-cd ~/.claude/skills/mos && git pull
+cd ~/Desktop/marketing-os-skills && git pull
 ```
 
-Updates are announced in the Skool community.
+The links point at the clone, so a pull is all it takes. (If you copied the folders instead of linking, copy them again.) Updates are announced in the Skool community.
 
 ---
 
@@ -356,7 +366,8 @@ Updates are announced in the Skool community.
 ## Troubleshooting
 
 **Skills don't show up in Claude Code**
-- Make sure you cloned to `~/.claude/skills/mos` (check the path)
+- The skill folders must be *direct* children of `~/.claude/skills/` (`~/.claude/skills/mos-avatar/SKILL.md`). A clone nested one level deeper is invisible — no error, the skills just never load.
+- Check with `ls ~/.claude/skills/ | grep mos-` — every skill should be listed
 - Restart Claude Code after installing
 
 **Avatar reads too generic**
