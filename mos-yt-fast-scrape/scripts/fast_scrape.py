@@ -12,7 +12,8 @@ or a text/JSON file of IDs. Channel and playlist listing needs yt-dlp
 (`pip install yt-dlp`); individual videos need nothing at all.
 
 Writes one Markdown file per video (title, URL, date, duration, word count,
-then the transcript as readable paragraphs) plus _manifest.json.
+then the transcript as readable paragraphs) plus _manifest.json, into
+~/Downloads/<channel-name>-yt by default (the Windows Downloads folder under WSL).
 """
 import argparse, json, os, re, sys, time, random, threading, subprocess
 import urllib.request, urllib.parse, urllib.error
@@ -276,6 +277,33 @@ def fmt_dur(sec):
     return f"{h}h {m}m {sec % 60}s" if h else f"{m}m {sec % 60}s"
 
 
+def downloads_dir():
+    """The user's Downloads folder on macOS, Linux, native Windows, and WSL.
+
+    Under WSL the Linux home usually has no Downloads folder and the user thinks of
+    the Windows one as theirs, so look there first when it is the only real profile."""
+    home = os.path.expanduser("~")
+    try:
+        with open("/proc/version") as f:
+            on_wsl = "microsoft" in f.read().lower()
+    except OSError:
+        on_wsl = False
+    if on_wsl and os.path.isdir("/mnt/c/Users"):
+        skip = {"public", "default", "default user", "all users"}
+        profiles = [d for d in os.listdir("/mnt/c/Users")
+                    if d.lower() not in skip and os.path.isdir(os.path.join("/mnt/c/Users", d, "Downloads"))]
+        me = os.environ.get("USER", "").lower()
+        preferred = [d for d in profiles if d.lower() == me] or profiles
+        if len(preferred) == 1:
+            return os.path.join("/mnt/c/Users", preferred[0], "Downloads")
+    return os.path.join(home, "Downloads")
+
+
+def default_out_dir(channel_name):
+    """~/Downloads/<channel-slug>-yt, e.g. ~/Downloads/charlie-morgan-yt."""
+    return os.path.join(downloads_dir(), f"{slug(channel_name, 60)}-yt")
+
+
 def write_outputs(results, out_dir, source):
     ok = [(v, m) for v, m, _ in results if m]
     bad = [(v, e) for v, m, e in results if not m]
@@ -314,7 +342,7 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("inputs", nargs="*", help="video/playlist/channel URLs, video IDs, or files of them")
     ap.add_argument("--ids-file", help="text (one per line) or JSON {\"videoIds\": [...]} file of IDs/URLs")
-    ap.add_argument("--out", help="output folder (default: outputs/transcripts/<Channel Name>)")
+    ap.add_argument("--out", help="output folder (default: ~/Downloads/<channel-name>-yt)")
     ap.add_argument("--max", type=int, default=0, help="cap the number of videos (0 = no cap)")
     ap.add_argument("--workers", type=int, default=25, help="parallel downloads (default 25)")
     ap.add_argument("--shorts", action="store_true", help="for channel URLs, list the Shorts tab instead of Videos")
@@ -348,7 +376,7 @@ def main():
     else:
         authors = Counter(m["author"] for m in ok if m["author"])
         name = authors.most_common(1)[0][0] if authors else "Unknown Channel"
-        out_dir = os.path.join("outputs", "transcripts", re.sub(r'[\\/:*?"<>|]', "", name).strip() or "Unknown Channel")
+        out_dir = default_out_dir(name)
     manifest = write_outputs(results, out_dir, " ".join(args.inputs) or args.ids_file)
 
     print()
