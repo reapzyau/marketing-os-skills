@@ -1,6 +1,6 @@
 # marketing-os-skills
 
-The default skills that ship alongside the [MarketingOS engine](https://github.com/reapzyau/marketing-os) (`pipx install marketing-os`): a knowledge library that maintains itself, plus the index of every other `mos-*-skills` pack.
+The default skills that ship alongside the [MarketingOS engine](https://github.com/the-vibe-marketing-lab/marketing-os) (`pipx install marketing-os`): a knowledge library that maintains itself, plus the index of every other `mos-*-skills` pack.
 
 Built by [The Vibe Marketing Lab](https://www.skool.com/the-vibe-marketing-lab). Powered by Claude Code.
 
@@ -26,11 +26,11 @@ Each pack is its own repo with the same layout and the same `setup.sh`. Install 
 
 | Pack | Skills | Install |
 |------|--------|---------|
-| [mos-hormozi-skills](https://github.com/reapzyau/mos-hormozi-skills) | `/mos-avatar`, `/mos-offer`, `/mos-money-models`, and the interactive `$100M` chain (`/mos-100m-offer`, `/mos-100m-leads`, `/mos-100m-money-models`, `/mos-100m-onepager`) | `git clone https://github.com/reapzyau/mos-hormozi-skills.git ~/Desktop/mos-hormozi-skills && bash ~/Desktop/mos-hormozi-skills/setup.sh` |
-| [mos-copywriting-skills](https://github.com/reapzyau/mos-copywriting-skills) | `/mos-copy-research`, `/mos-copywriting`, `/mos-proofread` | `git clone https://github.com/reapzyau/mos-copywriting-skills.git ~/Desktop/mos-copywriting-skills && bash ~/Desktop/mos-copywriting-skills/setup.sh` |
-| [mos-smma-skills](https://github.com/reapzyau/mos-smma-skills) | `/mos-linkedin-post`, `/mos-x-post` | `git clone https://github.com/reapzyau/mos-smma-skills.git ~/Desktop/mos-smma-skills && bash ~/Desktop/mos-smma-skills/setup.sh` |
-| [mos-yt-skills](https://github.com/reapzyau/mos-yt-skills) | `/mos-yt-fast-scrape`, `/mos-yt-transcribe` | `git clone https://github.com/reapzyau/mos-yt-skills.git ~/Desktop/mos-yt-skills && bash ~/Desktop/mos-yt-skills/setup.sh` |
-| [mos-geo-skills](https://github.com/reapzyau/mos-geo-skills) | `/mos-geo-llm-buttons` and future GEO skills | `git clone https://github.com/reapzyau/mos-geo-skills.git ~/Desktop/mos-geo-skills && bash ~/Desktop/mos-geo-skills/setup.sh` |
+| [mos-hormozi-skills](https://github.com/the-vibe-marketing-lab/mos-hormozi-skills) | `/mos-avatar`, `/mos-offer`, `/mos-money-models`, and the interactive `$100M` chain (`/mos-100m-offer`, `/mos-100m-leads`, `/mos-100m-money-models`, `/mos-100m-onepager`) | `git clone https://github.com/the-vibe-marketing-lab/mos-hormozi-skills.git ~/Desktop/mos-hormozi-skills && bash ~/Desktop/mos-hormozi-skills/setup.sh` |
+| [mos-copywriting-skills](https://github.com/the-vibe-marketing-lab/mos-copywriting-skills) | `/mos-copy-research`, `/mos-copywriting`, `/mos-proofread` | `git clone https://github.com/the-vibe-marketing-lab/mos-copywriting-skills.git ~/Desktop/mos-copywriting-skills && bash ~/Desktop/mos-copywriting-skills/setup.sh` |
+| [mos-smma-skills](https://github.com/the-vibe-marketing-lab/mos-smma-skills) | `/mos-linkedin-post`, `/mos-x-post` | `git clone https://github.com/the-vibe-marketing-lab/mos-smma-skills.git ~/Desktop/mos-smma-skills && bash ~/Desktop/mos-smma-skills/setup.sh` |
+| [mos-yt-skills](https://github.com/the-vibe-marketing-lab/mos-yt-skills) | `/mos-yt-fast-scrape`, `/mos-yt-transcribe` | `git clone https://github.com/the-vibe-marketing-lab/mos-yt-skills.git ~/Desktop/mos-yt-skills && bash ~/Desktop/mos-yt-skills/setup.sh` |
+| [mos-geo-skills](https://github.com/the-vibe-marketing-lab/mos-geo-skills) | `/mos-geo-llm-buttons` and future GEO skills | `git clone https://github.com/the-vibe-marketing-lab/mos-geo-skills.git ~/Desktop/mos-geo-skills && bash ~/Desktop/mos-geo-skills/setup.sh` |
 
 The MarketingOS *lifecycle* skills (onboard, start, status, think, bet, end, update, help) are not in any pack: they ship inside the engine and install via `mos install`, so they always match the engine version you're running.
 
@@ -41,7 +41,7 @@ The MarketingOS *lifecycle* skills (onboard, start, status, think, bet, end, upd
 Skills live in `~/.claude/skills/`. This repo keeps them under version control and links them into place, so a `git pull` is all an update takes.
 
 ```bash
-git clone https://github.com/reapzyau/marketing-os-skills.git ~/Desktop/marketing-os-skills
+git clone https://github.com/the-vibe-marketing-lab/marketing-os-skills.git ~/Desktop/marketing-os-skills
 cd ~/Desktop/marketing-os-skills
 bash setup.sh
 ```
