@@ -60,7 +60,7 @@ For a single video URL there is nothing to ask. For a playlist, "all of it" is t
 
 **Question 2: Where should the transcripts go?**
 
-Offer the default folder `outputs/transcripts/<Channel Name>/` (relative to the current project, matching where `/mos-yt-transcribe` saves), and let them type any other path. Two common alternatives worth mentioning: `knowledge/raw/<channel>` if they are feeding `/mos-wiki-ingest`, or a folder inside a research project they already have open.
+Offer the default, which is a new folder in their Downloads named after the channel: `~/Downloads/<channel-name>-yt/` (for example `~/Downloads/charlie-morgan-yt/`). The script works this out itself on macOS, Windows, and WSL, so you do not need to know the channel name in advance. Let them type any other path instead. Two common alternatives worth mentioning: `outputs/transcripts/<Channel Name>/` inside their project (where `/mos-yt-transcribe` saves), or `knowledge/raw/<channel>` if they are feeding `/mos-wiki-ingest`.
 
 Confirm the path you will use back to them in full so there is no surprise about where 500 files just landed.
 
@@ -81,7 +81,7 @@ Options:
 
 | Flag | Effect |
 |------|--------|
-| `--out DIR` | Save somewhere other than `outputs/transcripts/<Channel Name>/` |
+| `--out DIR` | Save somewhere other than the default `~/Downloads/<channel-name>-yt/` |
 | `--max N` | Stop after N videos (newest first for channels) |
 | `--shorts` | For a channel URL, scrape the Shorts tab instead of Videos |
 | `--timestamps` | Prefix each paragraph with `[m:ss]` so quotes can be located in the video |
@@ -91,7 +91,7 @@ Options:
 Examples:
 
 ```bash
-# A whole channel, long-form only, default folder
+# A whole channel, long-form only, into ~/Downloads/alex-hormozi-yt/
 python3 "$SKILL_DIR/scripts/fast_scrape.py" "https://www.youtube.com/@AlexHormozi"
 
 # Newest 50 with timestamps, straight into a wiki's raw folder
@@ -117,7 +117,7 @@ Relay the script's summary in this shape, then offer the natural next move:
 YouTube scrape complete
 =======================
 Source   : @AlexHormozi (Videos tab)
-Saved to : outputs/transcripts/Alex Hormozi/
+Saved to : ~/Downloads/alex-hormozi-yt/
 Videos   : 509 saved, 8 skipped
 Words    : 2,924,640  (217 hours of video)
 Time     : 38.6s
@@ -129,7 +129,7 @@ Skipped (all listed in _manifest.json):
 
 Next moves worth suggesting, depending on what they said they were after:
 
-- **Search it:** `grep -ril "grand slam offer" "outputs/transcripts/Alex Hormozi/"`
+- **Search it:** `grep -ril "grand slam offer" ~/Downloads/alex-hormozi-yt/`
 - **Ask questions across the whole archive:** point Claude at the folder, or run `/mos-wiki-ingest` on it so the knowledge compounds instead of being re-read every time.
 - **Mine it for content:** `/mos-linkedin-post` or `/mos-x-post` can repurpose any single transcript.
 
@@ -162,4 +162,4 @@ Knowing this helps you explain results honestly.
 - **Never download the video files.** Nobody asked for 200 GB of MP4s.
 - **Ask how many and where before running.** Two questions, one message, defaults offered. Skip a question only if the user already answered it.
 - **Report skips with reasons**, not just a count. "8 skipped" reads as a bug; "6 have no captions, 2 are non-English" reads as complete.
-- **Default folder is `outputs/transcripts/<Channel Name>/`** so it sits alongside anything `/mos-yt-transcribe` produced.
+- **Default folder is `~/Downloads/<channel-name>-yt/`**, one folder per channel, easy to find in Finder or Explorer. Pass `--out` to put it inside a project instead.
