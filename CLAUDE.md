@@ -54,7 +54,8 @@ All four read and write `outputs/mos-100m-*-{{slug}}.md`, sharing one slug so ea
 5. `mos-x-post` — X/Twitter posts and threads from a topic or repurposed long-form
 
 **Research tooling:**
-6. `mos-yt-transcribe` — YouTube transcript downloader
+6. `mos-yt-fast-scrape` — Bulk YouTube transcript scraper (channel → Markdown in seconds, stdlib only)
+6b. `mos-yt-transcribe` — YouTube SRT subtitle downloader
 
 **Knowledge library (Karpathy LLM Wiki pattern — Ingest / Query / Lint):**
 7. `mos-wiki-ingest` — Compile sources into interlinked wiki pages

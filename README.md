@@ -60,7 +60,8 @@ Run them in order. `/mos-copywriting` gates on real reader language, so `/mos-co
 
 | # | Skill | What It Does | Time |
 |---|-------|-------------|------|
-| 6 | `/mos-yt-transcribe` | Downloads SRT transcripts from any YouTube video, playlist, or full channel into a local research library | ~10s/video |
+| 6 | `/mos-yt-fast-scrape` | Scrapes a whole YouTube channel, playlist, or video into clean Markdown transcripts, 25 videos at a time, no API key | ~40s per 500 videos |
+| 6b | `/mos-yt-transcribe` | Downloads SRT subtitle files (per-line timestamps) from any YouTube video, playlist, or channel | ~10s/video |
 
 **Knowledge library — a wiki that maintains itself (Karpathy's LLM Wiki pattern):**
 
@@ -72,7 +73,7 @@ Run them in order. `/mos-copywriting` gates on real reader language, so `/mos-co
 
 > **Setting up the vault:** the one-time setup is handled by a **master prompt** (included alongside this bundle — grab it from the Skool post), not a skill. Paste it into Claude Code in an empty folder, answer two questions, and it scaffolds the whole `raw/` + `wiki/` structure plus the schema. After that, the two skills below run the ongoing loop.
 
-**The offer chain:** Avatar → Offer → Money Model. Each offer skill reads the output of the previous one. `/mos-yt-transcribe` is independent — use it anytime you want to mine a YouTube channel for content ideas, competitor angles, or research material.
+**The offer chain:** Avatar → Offer → Money Model. Each offer skill reads the output of the previous one. `/mos-yt-fast-scrape` is independent — use it anytime you want to mine a YouTube channel for content ideas, competitor angles, or research material. Reach for `/mos-yt-transcribe` only when you specifically need SRT subtitle files.
 
 **The wiki loop:** Set up the vault once with the master prompt → Ingest sources as you collect them → Lint when it grows. Point it at anything you want to remember and reuse: books you read, research you do, your own projects, or your marketing (a voice-of-customer bank, a self-compiling competitor wiki, a content-idea vault). Same pattern, your call where to aim it.
 
@@ -249,7 +250,15 @@ Give it a topic, or point it at a long-form piece (a transcript, a wiki page, a 
 
 Same idea for X/Twitter — single posts or full threads from a topic, or your long-form content repurposed into tweets.
 
-### 6. Transcribe YouTube Research
+### 6. Scrape YouTube Transcripts
+
+```
+/mos-yt-fast-scrape
+```
+
+Paste in a channel, playlist, or video URL and the skill pulls every English transcript into `outputs/transcripts/[Channel Name]/` as readable Markdown, 25 videos at a time. A 500-video channel takes about 40 seconds. Nothing to set up: single videos need only Python, channels and playlists need `pip install yt-dlp` for the listing step. Skips (no captions, non-English, private) are listed with reasons in `_manifest.json`.
+
+### 6b. Download SRT Subtitles
 
 ```
 /mos-yt-transcribe
@@ -330,7 +339,7 @@ Outputs are downstream of the wiki, so re-ingesting them is circular — you'd b
 
 ```
 SET UP ONCE       → master prompt (scaffolds raw/ + wiki/ + the schema)
-FEED CONTINUOUSLY → drop sources into raw/ (/mos-yt-transcribe, web clipper, file drops)
+FEED CONTINUOUSLY → drop sources into raw/ (/mos-yt-fast-scrape, web clipper, file drops)
 INGEST ON DEMAND  → /mos-wiki-ingest a domain when you're about to use it (small batches)
 QUERY VIA INDEX   → /mos-wiki-query — and let it file good answers back
 LINT PERIODICALLY → /mos-wiki-lint after a big batch, or monthly
