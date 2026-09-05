@@ -1,282 +1,62 @@
 # marketing-os-skills
 
-> Formerly `tvml-skills`. The repo and every skill in it moved to the MarketingOS brand (`mos-*` prefix, matching the `mos` CLI); the old GitHub URL redirects here.
-
-AI skills for The Vibe Marketing Lab community: an offer-building pipeline, social-content writers, research tooling, and a self-maintaining knowledge library.
-
-**Scope of this repo:** every skill here is engine-agnostic — it works in any Claude Code project, no CLI required. The MarketingOS *lifecycle* skills (onboarding/setup, start, status, think, bet, end, update, help) are no longer in this repo: they ship natively with the MarketingOS engine and install via `mos install`, so they always match the engine version you're running. The engine itself is one line: `pipx install marketing-os`. Updates on that are announced in the Skool community.
+The default skills that ship alongside the [MarketingOS engine](https://github.com/reapzyau/marketing-os) (`pipx install marketing-os`): a knowledge library that maintains itself, plus the index of every other `mos-*-skills` pack.
 
 Built by [The Vibe Marketing Lab](https://www.skool.com/the-vibe-marketing-lab). Powered by Claude Code.
 
----
-
-## What You Get
-
-> **First time?** Scaffold your MarketingOS repo with the engine's own onboarding (`mos-onboard`, installed with the engine) — it detects in-house vs agency and builds the home base these skills work inside. Then come back here.
-
-**The Offer Engine — build your offer from scratch:**
-
-| # | Skill | What It Does | Time |
-|---|-------|-------------|------|
-| 1 | `/mos-avatar` | Builds a 10-section customer avatar from your business files | ~3-5 min |
-| 2 | `/mos-offer` | Builds a structured offer with value stack, pricing, guarantees, and packaging | ~5-8 min |
-| 3 | `/mos-money-models` | Designs the full offer sequence — attraction, upsell, downsell, continuity — with 30-day payback math | ~5-8 min |
-
-**The $100M chain — the same four jobs, walked one decision at a time:**
-
-These four are the interactive, chapter-by-chapter alternative to `/mos-offer` and `/mos-money-models`. Instead of generating a workbook for you to review, they stop at every decision and make you choose. Slower, and much harder to end up with a plan you don't believe.
-
-| # | Skill | What It Does | Stops |
-|---|-------|-------------|-------|
-| 2a | `/mos-100m-offer` | Builds a Grand Slam Offer — market, pricing, value equation, bonuses, guarantee, naming | 12 |
-| 2b | `/mos-100m-leads` | Builds a lead magnet plus ONE advertising channel, with real activity maths | 10 |
-| 2c | `/mos-100m-money-models` | Sequences attraction, upsell, downsell and continuity offers for 30-day payback | 6 |
-| 2d | `/mos-100m-onepager` | Distils all three into a one-page GTM summary, in markdown, Word and HTML | — |
-
-Run them in order — each reads the previous one's output from `outputs/`, and they all share one `{{slug}}`. Pick either this chain or `/mos-offer` + `/mos-money-models`; running both just gives you two competing offers.
-
-> These four apply the frameworks from Alex Hormozi's *$100M Offers*, *$100M Leads* and *$100M Money Models*. They are independent implementations, not affiliated with or endorsed by the author. Read the books for the full argument — these skills are the build process, not a substitute for the source.
-
-**The Copywriting Blueprint — research it, write it, then pressure-test it:**
-
-| # | Skill | What It Does | Time |
-|---|-------|-------------|------|
-| 3a | `/mos-copy-research` | Runs the 6-step research ladder and builds a compounding Research Bank of real reader language | ~10-20 min |
-| 3b | `/mos-copywriting` | Writes headlines, ads, emails, landing pages, sales letters and VSLs from distilled classic frameworks | ~3-8 min |
-| 3c | `/mos-proofread` | QA pass — ordered single-lens reviews returning line-referenced rewrites | ~2-5 min |
-
-Run them in order. `/mos-copywriting` gates on real reader language, so `/mos-copy-research` is not optional for high-stakes surfaces.
-
-> `/mos-copywriting` applies frameworks from published works by Joseph Sugarman, Dan Kennedy, David Ogilvy, John Caples and Gary Halbert. Independent implementation, not affiliated with or endorsed by those authors or their estates.
-
-**Social content — turn a topic or long-form piece into platform-ready posts:**
-
-| # | Skill | What It Does | Time |
-|---|-------|-------------|------|
-| 4 | `/mos-linkedin-post` | Generates LinkedIn posts from a topic, or repurposes long-form content into a batch of posts | ~2-3 min |
-| 5 | `/mos-x-post` | Generates X/Twitter posts and threads from a topic, or repurposes long-form into tweets | ~2-3 min |
-
-**Research tooling — turn external content into searchable knowledge:**
-
-| # | Skill | What It Does | Time |
-|---|-------|-------------|------|
-| 6 | `/mos-yt-fast-scrape` | Scrapes a whole YouTube channel, playlist, or video into clean Markdown transcripts, 25 videos at a time, no API key | ~40s per 500 videos |
-| 6b | `/mos-yt-transcribe` | Downloads SRT subtitle files (per-line timestamps) from any YouTube video, playlist, or channel | ~10s/video |
-
-**Knowledge library — a wiki that maintains itself (Karpathy's LLM Wiki pattern):**
-
-| # | Skill | What It Does | Time |
-|---|-------|-------------|------|
-| 7 | `/mos-wiki-ingest` | Reads a source (file, folder, URL, or pasted text) and compiles it into interlinked wiki pages, updating indexes and the change log | ~30s/source |
-| 8 | `/mos-wiki-query` | Answers a question from the wiki — reads the index, opens only the pages it needs, cites them, and files genuinely new answers back as pages | ~20s |
-| 9 | `/mos-wiki-lint` | Health-checks the wiki — orphan pages, broken links, index mismatches, contradictions, stale data — and optionally auto-fixes | ~1 min |
-
-> **Setting up the vault:** the one-time setup is handled by a **master prompt** (included alongside this bundle — grab it from the Skool post), not a skill. Paste it into Claude Code in an empty folder, answer two questions, and it scaffolds the whole `raw/` + `wiki/` structure plus the schema. After that, the two skills below run the ongoing loop.
-
-**The offer chain:** Avatar → Offer → Money Model. Each offer skill reads the output of the previous one. `/mos-yt-fast-scrape` is independent — use it anytime you want to mine a YouTube channel for content ideas, competitor angles, or research material. Reach for `/mos-yt-transcribe` only when you specifically need SRT subtitle files.
-
-**The wiki loop:** Set up the vault once with the master prompt → Ingest sources as you collect them → Lint when it grows. Point it at anything you want to remember and reuse: books you read, research you do, your own projects, or your marketing (a voice-of-customer bank, a self-compiling competitor wiki, a content-idea vault). Same pattern, your call where to aim it.
-
-Each skill uses parallel AI agents to generate sections simultaneously, then validates everything with a dedicated fact-checking agent before writing the final workbook.
+> **Coming from the old single repo?** The offer, copywriting, social and YouTube skills moved into their own packs on 2026-09-05 (see the pack list below). Your existing links keep working until you re-clone; when you do, run each pack's `setup.sh`.
 
 ---
 
-## What You End Up With
+## What's in this repo
 
-Three workbooks in your `outputs/` folder:
+**The knowledge library — a wiki that maintains itself (Karpathy's LLM Wiki pattern):**
 
-```
-outputs/
-├── mos-avatar-workbook.md           # Who your dream customer is
-├── mos-offer-workbook-[name].md     # Your structured offer
-└── mos-money-model-[name].md        # Your complete offer sequence
-```
+| # | Skill | What it does | Time |
+|---|-------|--------------|------|
+| 1 | `/mos-wiki-ingest` | Reads a source (file, folder, URL, or pasted text) and compiles it into interlinked wiki pages, updating indexes and the change log | ~30s per source |
+| 2 | `/mos-wiki-query` | Answers a question from the wiki: reads the index, opens only the pages it needs, cites them, and files genuinely new answers back as pages | ~20s |
+| 3 | `/mos-wiki-lint` | Health-checks the wiki (orphan pages, broken links, index mismatches, contradictions, stale data) and optionally auto-fixes | ~1 min |
 
-Or, if you took the `$100M` chain instead — four files sharing one slug:
+> **Setting up the vault:** the one-time setup is a **master prompt** (grab it from the Skool post), not a skill. Paste it into Claude Code in an empty folder, answer two questions, and it scaffolds the whole `raw/` + `wiki/` structure plus the schema. The three skills run the ongoing loop after that.
 
-```
-outputs/
-├── mos-avatar-workbook.md                  # Who your dream customer is
-├── mos-100m-offer-workbook-[slug].md       # Your Grand Slam Offer
-├── mos-100m-leads-plan-[slug].md           # Lead magnet + one channel
-├── mos-100m-money-model-[slug].md          # Your offer sequence
-└── mos-100m-gtm-onepager-[slug].md         # The whole thing on one page
-```
+## The other packs
 
-Together, these give you:
-- **Avatar** — a deep profile of your dream customer: demographics, pain points, goals, objections, buying psychology, and awareness stages
-- **Offer** — a validated offer with value equation scoring, enhancement levers (scarcity, urgency, bonuses), guarantee design, benefit copy, and a micro-step funnel flow
-- **Money Model** — the full offer sequence optimised for cashflow: attraction offer, upsells, downsells, continuity model, 30-day payback math, and LTV projections
+Each pack is its own repo with the same layout and the same `setup.sh`. Install the ones you need.
 
-These aren't templates. They're built from YOUR business files, validated against real market data, and ready to use.
+| Pack | Skills | Install |
+|------|--------|---------|
+| [mos-hormozi-skills](https://github.com/reapzyau/mos-hormozi-skills) | `/mos-avatar`, `/mos-offer`, `/mos-money-models`, and the interactive `$100M` chain (`/mos-100m-offer`, `/mos-100m-leads`, `/mos-100m-money-models`, `/mos-100m-onepager`) | `git clone https://github.com/reapzyau/mos-hormozi-skills.git ~/Desktop/mos-hormozi-skills && bash ~/Desktop/mos-hormozi-skills/setup.sh` |
+| [mos-copywriting-skills](https://github.com/reapzyau/mos-copywriting-skills) | `/mos-copy-research`, `/mos-copywriting`, `/mos-proofread` | `git clone https://github.com/reapzyau/mos-copywriting-skills.git ~/Desktop/mos-copywriting-skills && bash ~/Desktop/mos-copywriting-skills/setup.sh` |
+| [mos-smma-skills](https://github.com/reapzyau/mos-smma-skills) | `/mos-linkedin-post`, `/mos-x-post` | `git clone https://github.com/reapzyau/mos-smma-skills.git ~/Desktop/mos-smma-skills && bash ~/Desktop/mos-smma-skills/setup.sh` |
+| [mos-yt-skills](https://github.com/reapzyau/mos-yt-skills) | `/mos-yt-fast-scrape`, `/mos-yt-transcribe` | `git clone https://github.com/reapzyau/mos-yt-skills.git ~/Desktop/mos-yt-skills && bash ~/Desktop/mos-yt-skills/setup.sh` |
+| [mos-geo-skills](https://github.com/reapzyau/mos-geo-skills) | `/mos-geo-llm-buttons` and future GEO skills | `git clone https://github.com/reapzyau/mos-geo-skills.git ~/Desktop/mos-geo-skills && bash ~/Desktop/mos-geo-skills/setup.sh` |
+
+The MarketingOS *lifecycle* skills (onboard, start, status, think, bet, end, update, help) are not in any pack: they ship inside the engine and install via `mos install`, so they always match the engine version you're running.
 
 ---
 
-## Prerequisites
+## Install
 
-Before running the skills, you need:
-
-1. **Claude Code installed and working**
-   - If you haven't set this up yet, start with the Claude Code Masterclass in the Skool classroom
-   - You need a Claude Pro or Max subscription (the parallel agents need enough context)
-
-2. **Business reference files populated**
-   - Your project needs `reference/core/` with at least these files:
-
-   | File | What goes in it |
-   |------|----------------|
-   | `soul.md` | Your story — why you started this business, what drives you |
-   | `offer.md` | What you sell — pricing, delivery model, who it's for |
-   | `audience.md` | Who you serve — demographics, where they hang out, what they struggle with |
-   | `voice.md` | How your brand speaks — tone, phrases, personality |
-
-   - **Optional but powerful:** `reference/proof/testimonials.md` — real customer quotes. The more real language you give it, the sharper the output.
-   - **Scaffolded your brain with `mos onboard`?** The engine writes it under `business/`, but these skills currently read `reference/core/` — so copy or symlink the files across until the skills are aligned to the engine's layout (it's on the list):
-
-   | `mos onboard` writes | These skills read |
-   |------|------|
-   | `business/brand/brand.md`, `business/brand/voice.md` | `reference/core/soul.md`, `reference/core/voice.md` |
-   | `business/audience/primary.md`, `business/offers/<slug>/offer.md` | `reference/core/audience.md`, `reference/core/offer.md` |
-   | `business/proof/testimonials.md` | `reference/proof/testimonials.md` |
-
----
-
-## Installation
-
-The repo is public — no invite needed.
-
-### Step 1: Clone the repo
-
-Clone it anywhere. `~/Desktop/marketing-os-skills` is a fine spot:
+Skills live in `~/.claude/skills/`. This repo keeps them under version control and links them into place, so a `git pull` is all an update takes.
 
 ```bash
 git clone https://github.com/reapzyau/marketing-os-skills.git ~/Desktop/marketing-os-skills
+cd ~/Desktop/marketing-os-skills
+bash setup.sh
 ```
 
-### Step 2: Link the skills into `~/.claude/skills/`
+`setup.sh` links every skill folder in this repo into `~/.claude/skills/` (a symlink on macOS and Linux, a directory junction on Windows via Git Bash). Restart any open Claude Code session, then type `/mos-wiki-query` to confirm it loads.
 
-Claude Code only finds a skill whose folder is a *direct* child of `~/.claude/skills/` — it looks for `~/.claude/skills/<name>/SKILL.md` and never deeper. So don't clone straight into `~/.claude/skills/`; link each `mos-*` folder in instead. Once linked, the skills are available in every Claude Code project.
+**Updating:** `cd ~/Desktop/marketing-os-skills && git pull`. Updates are announced in the Skool community.
 
-macOS / Linux:
-
-```bash
-for d in ~/Desktop/marketing-os-skills/mos-*; do ln -s "$d" ~/.claude/skills/; done
-```
-
-Windows: open Git Bash and make a junction per folder, e.g. `cmd //c mklink //J "$USERPROFILE\.claude\skills\mos-avatar" "$USERPROFILE\Desktop\marketing-os-skills\mos-avatar"` — or simply copy the `mos-*` folders into `~/.claude/skills/`.
-
-### Step 3: Verify
-
-Open Claude Code in any project and type `/mos-avatar`. If it loads the skill, you're good.
+**Prerequisites:** Claude Code with a Claude Pro or Max subscription. If you haven't set that up, start with the Claude Code Masterclass in the Skool classroom.
 
 ---
 
-## How to Use
+## How to use the knowledge library
 
-Run these inside your MarketingOS repo (scaffolded by the engine's `mos-onboard` skill) with your business files in place.
-
-### 1. Build Your Avatar
-
-```
-/mos-avatar
-```
-
-Claude reads your business files and builds a 10-section customer avatar:
-1. Dream client name + photo
-2. Demographics
-3. Before state (their current pain — in their words)
-4. Dream outcome
-5. Top 5 pain points
-6. Top 5 goals
-7. Buyer decision questions
-8. What they've tried before
-9. Roadblocks and objections
-10. Stage of awareness
-
-It'll also generate an AI avatar image if you have a Google API key configured.
-
-**Output:** `outputs/mos-avatar-workbook.md`
-
-### 2. Build Your Offer
-
-```
-/mos-offer
-```
-
-Claude reads your avatar workbook and builds a complete offer:
-- Dream outcome and problem universe (before/during/after)
-- Solution matrix — every problem mapped to a solution
-- Value stack with named components and perceived values
-- Enhancement levers — scarcity, urgency, bonuses, guarantee
-- Offer packaging — name, pitch, benefit bullets, funnel flow
-- Pricing with value-to-price ratio and tier structure
-- CUB Test (Confusing? Unbelievable? Boring?) — must pass all three
-- Competitor analysis via web research
-
-**Output:** `outputs/mos-offer-workbook-[name].md`
-
-### 3. Build Your Money Model
-
-```
-/mos-money-models
-```
-
-Claude reads your offer workbook and designs the full sequence:
-- Attraction offer — what brings them in the door
-- Core offer — your main product
-- Upsell design — how to increase transaction value
-- Continuity model — recurring revenue
-- Downsell safety net — what to offer when they try to cancel
-- 30-day payback math — does one customer pay for acquiring the next?
-- LTV projections at 1, 3, 6, and 12 months
-- Cashflow acceleration tactics
-- Customer journey map from first touch to 12-month retention
-
-**Output:** `outputs/mos-money-model-[name].md`
-
-### 4. Write LinkedIn Posts
-
-```
-/mos-linkedin-post
-```
-
-Give it a topic, or point it at a long-form piece (a transcript, a wiki page, a past post) and it writes LinkedIn posts in your voice — single posts from an idea, or a batch repurposed from one long source.
-
-### 5. Write X Posts
-
-```
-/mos-x-post
-```
-
-Same idea for X/Twitter — single posts or full threads from a topic, or your long-form content repurposed into tweets.
-
-### 6. Scrape YouTube Transcripts
-
-```
-/mos-yt-fast-scrape
-```
-
-Paste in a channel, playlist, or video URL, tell it how many videos and where to save (default: a new `[channel-name]-yt` folder in your Downloads), and the skill pulls every English transcript as readable Markdown, 25 videos at a time. A 500-video channel takes about 40 seconds. Nothing to set up: single videos need only Python, channels and playlists need `pip install yt-dlp` for the listing step. Skips (no captions, non-English, private) are listed with reasons in `_manifest.json`.
-
-### 6b. Download SRT Subtitles
-
-```
-/mos-yt-transcribe
-```
-
-Paste in any YouTube URL and the skill downloads clean SRT transcripts you can grep, feed to Claude, or upload to NotebookLM:
-
-- **Single video URL** → no setup beyond `yt-dlp` (`pip install yt-dlp`)
-- **Playlist URL** → no setup beyond `yt-dlp`
-- **Full channel URL** → needs a free Apify account + `APIFY_TOKEN` (one-time, ~3 minutes — full walkthrough in the skill)
-
-**Output:** `outputs/transcripts/[Channel Name]/YYYY-MM-DD-[slug].en.srt`
-
-Then `grep -r "keyword" outputs/transcripts/[Channel Name]/` finds every mention of a topic across the channel in milliseconds. Ideal for competitor research, hook mining, or building a private knowledge base from any channel you study.
-
-### 7. Build Your Knowledge Library
-
-**First, set up the vault (one time).** Use the master prompt that ships with this bundle — grab it from the Skool post, paste it into Claude Code in an empty folder, and answer the two questions it asks. It scaffolds the whole structure:
+**First, set up the vault (one time).** Paste the master prompt into Claude Code in an empty folder and answer the two questions it asks. It scaffolds:
 
 - `knowledge/raw/` — your sources, frozen. You curate these; Claude never edits them.
 - `knowledge/wiki/` — the compiled pages Claude writes and maintains, connected with `[[wikilinks]]`.
@@ -289,113 +69,73 @@ Then `grep -r "keyword" outputs/transcripts/[Channel Name]/` finds every mention
 /mos-wiki-ingest
 ```
 
-Drop a source into `knowledge/raw/` (or paste text, or hand over a URL) and Claude compiles it into the wiki — creating and updating entity and concept pages, wiring up cross-references, and logging the ingest. One source can touch 5-15 pages. The cross-referencing is done once, here, not re-derived every time you ask a question.
+Drop a source into `knowledge/raw/` (or paste text, or hand over a URL) and Claude compiles it into the wiki: creating and updating entity and concept pages, wiring up cross-references, and logging the ingest. One source can touch 5-15 pages. The cross-referencing is done once, here, not re-derived every time you ask a question.
 
-**And keep it healthy as it grows:**
+**Keep it healthy as it grows:**
 
 ```
 /mos-wiki-lint
 ```
 
-Claude scans the whole wiki for orphan pages, broken links, index mismatches, contradictions, and stale data, then hands you a report and offers to auto-fix the safe stuff (index updates, missing links). It's a linter, but for your knowledge instead of your code.
+Claude scans the whole wiki for orphan pages, broken links, index mismatches, contradictions, and stale data, then hands you a report and offers to auto-fix the safe stuff. A linter for your knowledge instead of your code.
 
-**And to actually use what you've built:**
+**And actually use what you've built:**
 
 ```
 /mos-wiki-query
 ```
 
-Ask a question and Claude answers it *from the wiki* the disciplined way: it reads the index to find the right pages, opens just those two or three (never re-reading all your raw sources), and cites them. When an answer is genuinely new — a comparison, a synthesis, a connection — it files it back as its own page so you never lose it to chat history. This is the Ingest → **Query** → Lint trilogy completed.
+Ask a question and Claude answers it *from the wiki* the disciplined way: it reads the index to find the right pages, opens just those two or three (never re-reading all your raw sources), and cites them. When an answer is genuinely new (a comparison, a synthesis, a connection) it files it back as its own page so you never lose it to chat history.
 
-**Output:** a `knowledge/` folder you read in Obsidian — graph view shows every connection. No vector database, no code. Plain markdown you own.
+**Output:** a `knowledge/` folder you read in Obsidian, with graph view showing every connection. No vector database, no code. Plain markdown you own.
 
 ---
 
-## Using the Knowledge Library well
+## Using the knowledge library well
 
 A few rules that separate a library that compounds from a folder that rots.
 
-### raw vs wiki vs outputs — what goes where
+### raw vs wiki vs outputs
 
 The test is **not** who made it. It's what role the file plays:
 
-- **`knowledge/raw/`** — INPUTS the AI reads but never edits. Source material, frozen. Collected from the world (articles, transcripts, competitor pages) *or* captured by you (call notes, voice memos) — as long as it's a source you want the AI to synthesise *from*. This is your source of truth.
-- **`knowledge/wiki/`** — COMPILED KNOWLEDGE the AI writes and maintains. The synthesis of your raw sources, interlinked. You read it; the AI writes it.
-- **`outputs/`** (optional, outside the vault) — FINISHED ARTEFACTS you generate *from* the wiki: a post, a deck, a headline, a report. Work product, not part of the knowledge graph.
+- **`knowledge/raw/`** — INPUTS the AI reads but never edits. Collected from the world (articles, transcripts, competitor pages) *or* captured by you (call notes, voice memos), as long as it's a source you want the AI to synthesise *from*.
+- **`knowledge/wiki/`** — COMPILED KNOWLEDGE the AI writes and maintains. You read it; the AI writes it.
+- **`outputs/`** (outside the vault) — FINISHED ARTEFACTS you generate *from* the wiki: a post, a deck, a headline. Work product, not part of the graph.
 
-Litmus test: **does the AI read *from* it (`raw/`) or did the AI *produce* it (`outputs/`)?** Your own draft can be either — a draft kept so the AI learns your voice is `raw/`; a draft that's the finished deliverable is an output.
+Litmus test: **does the AI read *from* it (`raw/`) or did the AI *produce* it (`outputs/`)?**
 
 ### Would you ever ingest from `outputs/`? Almost never.
 
-Outputs are downstream of the wiki, so re-ingesting them is circular — you'd be re-synthesising your own synthesis. The one exception is the file-back move built into `/mos-wiki-query`: if an artefact surfaced *genuinely new knowledge* (a research finding, a competitor fact), promote *that knowledge* into a wiki page. Don't dump the whole deliverable into `raw/`.
+Outputs are downstream of the wiki, so re-ingesting them is circular. The one exception is the file-back move built into `/mos-wiki-query`: if an artefact surfaced *genuinely new knowledge*, promote *that knowledge* into a wiki page. Don't dump the whole deliverable into `raw/`.
 
 ### Already have a big library? Don't bulk-ingest it.
 
-- **Collected source docs** (PDFs, transcripts, clippings) → drop them into `raw/` as-is. That alone makes them available. Then ingest *only the slice you're about to use*, in small supervised batches — never the whole folder at once.
-- **Your own written/linked notes** (an existing vault) → these are already the `wiki/` layer. Point them at `knowledge/wiki/` and run `/mos-wiki-lint` to index and link them. Don't ingest them as raw.
-- The rule that keeps it clean: **if you wrote it, it's `wiki/`; if you collected it, it's `raw/`.** And: **compile what you'll query, not your whole library.**
+- **Collected source docs** (PDFs, transcripts, clippings): drop them into `raw/` as-is, then ingest *only the slice you're about to use*, in small supervised batches.
+- **Your own written notes** (an existing vault): these are already the `wiki/` layer. Point them at `knowledge/wiki/` and run `/mos-wiki-lint` to index and link them.
+- **If you wrote it, it's `wiki/`; if you collected it, it's `raw/`.** And: **compile what you'll query, not your whole library.**
 
 ### The daily loop
 
 ```
 SET UP ONCE       → master prompt (scaffolds raw/ + wiki/ + the schema)
-FEED CONTINUOUSLY → drop sources into raw/ (/mos-yt-fast-scrape, web clipper, file drops)
+FEED CONTINUOUSLY → drop sources into raw/ (/mos-yt-fast-scrape from mos-yt-skills, web clipper, file drops)
 INGEST ON DEMAND  → /mos-wiki-ingest a domain when you're about to use it (small batches)
-QUERY VIA INDEX   → /mos-wiki-query — and let it file good answers back
+QUERY VIA INDEX   → /mos-wiki-query, and let it file good answers back
 LINT PERIODICALLY → /mos-wiki-lint after a big batch, or monthly
 ```
 
 ### Scale note
 
-The index pattern works to roughly 100 sources / a few hundred pages with no search infrastructure. Past that, the agent can't lean on the index alone — add a local search tool (e.g. an on-device BM25 + vector search like `qmd`, available as CLI or MCP) so it can find pages without reading the whole index. This is exactly why "compile what you'll query" matters — it keeps you under the ceiling longer.
-
----
-
-## Updating
-
-When new versions are released, pull the latest:
-
-```bash
-cd ~/Desktop/marketing-os-skills && git pull
-```
-
-The links point at the clone, so a pull is all it takes. (If you copied the folders instead of linking, copy them again.) Updates are announced in the Skool community.
-
----
-
-## Tips
-
-- **Better inputs = better outputs.** The skills are only as good as your reference files. Real testimonials in `testimonials.md` make a massive difference — the AI uses your customers' actual language instead of guessing.
-- **Run them in order.** Avatar → Offer → Money Model. Each builds on the last. Skipping the avatar means the offer has no customer language to draw from.
-- **You can re-run any skill.** Got new testimonials? Run `/mos-avatar` again. Changed your pricing? Run `/mos-offer` again. The old files get overwritten with the updated version.
-- **Read the workbooks in Obsidian.** They're markdown files with cross-references. Obsidian renders them nicely with the graph view showing connections.
+The index pattern works to roughly 100 sources / a few hundred pages with no search infrastructure. Past that, add a local search tool (an on-device BM25 + vector search such as `qmd`, available as CLI or MCP) so the agent can find pages without reading the whole index. "Compile what you'll query" keeps you under the ceiling longer.
 
 ---
 
 ## Troubleshooting
 
-**Skills don't show up in Claude Code**
-- The skill folders must be *direct* children of `~/.claude/skills/` (`~/.claude/skills/mos-avatar/SKILL.md`). A clone nested one level deeper is invisible — no error, the skills just never load.
-- Check with `ls ~/.claude/skills/ | grep mos-` — every skill should be listed
-- Restart Claude Code after installing
-
-**Avatar reads too generic**
-- Add real customer testimonials to `reference/proof/testimonials.md`
-- The more specific language you give it, the more specific the output
-
-**Offer validation flags issues**
-- That's working as intended — the validation agent stress-tests your offer against real market data
-- Review the flags and decide what to adjust
-
-**"Avatar workbook not found" when running offer skill**
-- Make sure you ran `/mos-avatar` first
-- Check that the file exists in your `outputs/` folder
-
-**Image generation doesn't work**
-- You need a `GOOGLE_API_KEY` set up — this is optional. The skill works fine without it, just skips the avatar photo.
-
----
+- **Skills don't show up in Claude Code:** the folders must be *direct* children of `~/.claude/skills/`. `ls ~/.claude/skills/ | grep mos-` should list them. Re-run `setup.sh`, then restart Claude Code.
+- **`setup.sh` warns that a link already exists and points elsewhere:** you installed an older layout by hand. Remove that link and re-run.
 
 ## Questions?
 
-Drop them in the Skool community — post in the Questions category and tag Richard.
+Ask in the Skool community.

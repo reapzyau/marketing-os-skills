@@ -1,4 +1,4 @@
-# TVML Skills — Public Shared Repo
+# marketing-os-skills — Public Shared Repo
 
 This repo is shared with The Vibe Marketing Lab community members. It is PUBLIC to collaborators.
 
@@ -25,59 +25,33 @@ This repo is shared externally. Every commit is visible to community members.
 
 ## What This Repo Contains
 
-Claude Code skills for The Vibe Marketing Lab community, across four pillars:
-
-**Offer engine:**
-1. `mos-avatar` — Customer avatar workbook
-2. `mos-offer` — Offer creation workbook
-3. `mos-money-models` — Money model workbook
-
-**The $100M chain — interactive, chapter-by-chapter alternative to 2 + 3:**
-- `mos-100m-offer` — Grand Slam Offer, 12 stops
-- `mos-100m-leads` — Lead magnet + one channel, 10 stops
-- `mos-100m-money-models` — Offer sequencing for 30-day payback, 6 stops
-- `mos-100m-onepager` — GTM one-pager capstone
-
-All four read and write `outputs/mos-100m-*-{{slug}}.md`, sharing one slug so each step finds the previous one's output.
-
-> **Third-party framework rule.** These four apply frameworks from published books by Alex Hormozi. They are independent implementations, not affiliated with or endorsed by the author, and every SKILL.md carries that attribution. Do NOT add verbatim extracts, scanned material, or redistributable "cheat sheets" derived from the source texts to this public repo. The `references/` files must stay operational summaries written for the build process — one such cheat-sheet artifact was deliberately excluded during the port for exactly this reason.
-
-**The Copywriting Blueprint (research → write → QA):**
-- `mos-copy-research` — 6-step research ladder + compounding Research Bank
-- `mos-copywriting` — writes the copy from distilled classic frameworks
-- `mos-proofread` — ordered single-lens QA passes, line-referenced rewrites
-
-> Same third-party framework rule as the $100M chain applies here. `mos-copywriting` draws on published works by Sugarman, Kennedy, Ogilvy, Caples and Halbert; every `references/` file carries its own `Source:` line and the SKILL.md carries an independent-implementation notice. Do NOT add verbatim extracts or redistributable reproductions of those books.
-
-**Social content:**
-4. `mos-linkedin-post` — LinkedIn posts from a topic or repurposed long-form
-5. `mos-x-post` — X/Twitter posts and threads from a topic or repurposed long-form
-
-**Research tooling:**
-6. `mos-yt-fast-scrape` — Bulk YouTube transcript scraper (channel → Markdown in seconds, stdlib only)
-6b. `mos-yt-transcribe` — YouTube SRT subtitle downloader
+The **default pack** that accompanies the MarketingOS engine, plus the index of the other packs.
 
 **Knowledge library (Karpathy LLM Wiki pattern — Ingest / Query / Lint):**
-7. `mos-wiki-ingest` — Compile sources into interlinked wiki pages
-8. `mos-wiki-query` — Answer from the wiki (read index → pages → cite → file new knowledge back)
-9. `mos-wiki-lint` — Health-check the wiki for drift
+1. `mos-wiki-ingest` — Compile sources into interlinked wiki pages
+2. `mos-wiki-query` — Answer from the wiki (read index → pages → cite → file new knowledge back)
+3. `mos-wiki-lint` — Health-check the wiki for drift
+
+> Wiki setup is handled by a standalone master prompt (shipped alongside the bundle), not a skill.
+
+**Everything else lives in a category pack, each its own public repo with the same layout and `setup.sh`:**
+- `mos-hormozi-skills` — avatar, offer, money-models, and the `$100M` chain
+- `mos-copywriting-skills` — copy-research, copywriting, proofread
+- `mos-smma-skills` — linkedin-post, x-post
+- `mos-yt-skills` — yt-fast-scrape, yt-transcribe
+- `mos-geo-skills` — GEO skills
+
+Split on 2026-09-05 with per-skill git history preserved. A new skill goes into the pack that matches its job; a new category gets a new `mos-<category>-skills` repo cloned from this layout, and a row in this README's pack table.
 
 ## Scope Rule (which skills belong here)
 
-This repo holds **engine-agnostic** skills only — skills that work in any Claude Code project
-without the `mos` CLI. The MarketingOS lifecycle skills (onboard/setup, start, status, think,
-bet, end, update, help) ship natively inside the MarketingOS engine and install via
-`mos install`, so they can never drift from the CLI they wrap. If a skill here starts
-depending on `mos` commands, it either moves into the engine bundle or must degrade
-gracefully when the CLI is absent.
+Only the engine-agnostic **default** skills every MarketingOS user gets (today: the wiki loop). The MarketingOS lifecycle skills (onboard/setup, start, status, think, bet, end, update, help) ship natively inside the engine and install via `mos install`. Anything domain-specific belongs in a category pack.
 
-> Wiki setup is handled by a standalone master prompt (shipped alongside the bundle), not a skill. The three wiki skills run the ongoing ingest → query → maintain loop once the vault exists.
-
-Each skill has a `SKILL.md` (the skill prompt) and, where needed, a `references/` folder (frameworks) or `scripts/` folder.
+Each skill has a `SKILL.md` (the skill prompt) and, where needed, a `references/` folder (frameworks) or `scripts/` folder. `setup.sh` links every top-level skill folder into `~/.claude/skills/`.
 
 ## Editing Rules
 
 - Skills must work on any machine — use relative paths and env var references only
 - All API keys must be referenced as "set this in your environment" — never hardcode values
-- Keep the README.md install instructions up to date when adding skills
+- Keep the README.md pack table up to date when a pack is added or renamed; each pack's own README covers its skills
 - Test skills work without any of Richard's personal infrastructure before pushing

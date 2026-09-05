@@ -1,23 +1,18 @@
-# Environment and secrets
-.env
-.env.*
-.env.local
-*.key
-*.pem
-*.cert
+# Generated work product belongs in your own project, not in the skill pack.
+outputs/
+tmp/
+scratch/
+__pycache__/
 
-# OS files
+# OS / editor noise
 .DS_Store
 Thumbs.db
-
-# Editor files
-.vscode/
-.idea/
+desktop.ini
 *.swp
-*.swo
+.idea/
+.vscode/
 
-# Node
-node_modules/
-
-# Output files (should stay in user's project, not here)
-outputs/
+# Secrets never live here.
+.env
+.env.*
+!.env.example
