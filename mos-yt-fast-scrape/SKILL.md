@@ -45,12 +45,26 @@ Take the URL(s) from the message. The script accepts any mix of:
 | Bare IDs | `mRlSb0O5QNU` | 11-character video IDs |
 | A file | `ids.txt` or `ids.json` | One URL/ID per line, or `{"videoIds": [...]}` |
 
-Two things worth settling before you run it, because they change the result:
+Then, before running anything, ask the user two questions. Ask them together in one message (use the AskUserQuestion tool if it is available, otherwise just ask in plain text), and skip either one the user has already answered in their message.
 
-- **Scope.** A big channel can hold thousands of Shorts and hundreds of long-form videos. Default to the long-form Videos tab. If the user says "everything" on a large channel, or you have no idea how big it is, run with `--max 25` first so they can see the output shape before committing to the full run. Don't make them wait on a 2,000-video scrape they didn't mean to ask for.
-- **Output folder.** Default is `outputs/transcripts/<Channel Name>/`, matching where `/mos-yt-transcribe` saves. If the user is building a wiki (`/mos-wiki-ingest`) they may want it under `knowledge/raw/` instead; pass `--out` for that.
+**Question 1: How many videos?**
 
-Don't over-interview. If they gave a channel URL and said "scrape it", run the Videos tab into the default folder and tell them what you did.
+A channel can hold hundreds of long-form videos and thousands of Shorts, and the user usually has a number in mind. Offer these, with the first as the default:
+
+- **25 most recent** (a quick look at the shape of the output before committing to more)
+- **100 most recent**
+- **The whole channel** (every long-form video; warn that a large channel is a lot of files)
+- **A specific number** they type in
+
+For a single video URL there is nothing to ask. For a playlist, "all of it" is the sensible default, so only ask if the playlist is big.
+
+**Question 2: Where should the transcripts go?**
+
+Offer the default folder `outputs/transcripts/<Channel Name>/` (relative to the current project, matching where `/mos-yt-transcribe` saves), and let them type any other path. Two common alternatives worth mentioning: `knowledge/raw/<channel>` if they are feeding `/mos-wiki-ingest`, or a folder inside a research project they already have open.
+
+Confirm the path you will use back to them in full so there is no surprise about where 500 files just landed.
+
+Whatever they choose becomes `--max N` (omit for the whole channel) and `--out DIR` (omit for the default) in Step 2.
 
 ### Step 2: Run the script
 
@@ -146,6 +160,6 @@ Knowing this helps you explain results honestly.
 
 - **Use the bundled script.** Don't rewrite it inline or loop `yt-dlp` per video; that turns a 40-second job into a 40-minute one and is the exact thing this skill exists to avoid.
 - **Never download the video files.** Nobody asked for 200 GB of MP4s.
-- **Start capped on big or unknown channels** (`--max 25`), then run the full thing once the user has seen the shape.
+- **Ask how many and where before running.** Two questions, one message, defaults offered. Skip a question only if the user already answered it.
 - **Report skips with reasons**, not just a count. "8 skipped" reads as a bug; "6 have no captions, 2 are non-English" reads as complete.
 - **Default folder is `outputs/transcripts/<Channel Name>/`** so it sits alongside anything `/mos-yt-transcribe` produced.
