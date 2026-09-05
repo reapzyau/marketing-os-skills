@@ -256,7 +256,7 @@ Same idea for X/Twitter — single posts or full threads from a topic, or your l
 /mos-yt-fast-scrape
 ```
 
-Paste in a channel, playlist, or video URL and the skill pulls every English transcript into `outputs/transcripts/[Channel Name]/` as readable Markdown, 25 videos at a time. A 500-video channel takes about 40 seconds. Nothing to set up: single videos need only Python, channels and playlists need `pip install yt-dlp` for the listing step. Skips (no captions, non-English, private) are listed with reasons in `_manifest.json`.
+Paste in a channel, playlist, or video URL, tell it how many videos and where to save (default: a new `[channel-name]-yt` folder in your Downloads), and the skill pulls every English transcript as readable Markdown, 25 videos at a time. A 500-video channel takes about 40 seconds. Nothing to set up: single videos need only Python, channels and playlists need `pip install yt-dlp` for the listing step. Skips (no captions, non-English, private) are listed with reasons in `_manifest.json`.
 
 ### 6b. Download SRT Subtitles
 
